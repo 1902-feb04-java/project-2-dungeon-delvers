@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
 
   public submit()
   {
-    window.location.href = "http://google.com/";
+    window.location.href = "home";
   }
   public register()
   {
