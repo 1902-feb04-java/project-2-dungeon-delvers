@@ -21,5 +21,9 @@ export class LoginComponent implements OnInit {
   {
     window.location.href = "http://google.com/";
   }
+  public register()
+  {
+    window.location.href = "register";
+  }
 
 }
