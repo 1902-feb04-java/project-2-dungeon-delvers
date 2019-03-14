@@ -7,7 +7,7 @@ import { LoginService } from '../login.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  username: String;
+  username: String;  
   password: String;
   constructor(private service: LoginService) {
     
@@ -15,6 +15,15 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     
+  }
+
+  public submit()
+  {
+    window.location.href = "home";
+  }
+  public register()
+  {
+    window.location.href = "register";
   }
 
 }

@@ -1,0 +1,19 @@
+#character-container{
+    width: 25%;
+    height: 250px;
+    margin-left: 25%;
+    display: inline-block;
+    background-color: red;
+}
+#campaign-container{
+    display:inline-block;
+    width: 25%;
+    height: 250px;
+    background-color: blueviolet;
+}
+#campaign-search-container{
+    width : 50%;
+    height: 250px;
+    margin-left: 25%;
+    background-color: blue;
+}

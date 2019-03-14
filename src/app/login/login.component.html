@@ -1,22 +1,23 @@
 <div>
-  <form method="GET">
+  <form method="">
     <fieldset>
       <legend>Login:</legend>
       <label for="username-field">Login:</label>
-      <input type="text" name="username-field" id="username-field">
+      <input (input)="username = $event.target.value" type="text" name="username-field" id="username-field">
       <br>
       <label for="password-field">Password:</label>
-      <input type="password" name="password-field" id="password-field">
+      <input (input)="password = $event.target.value" type="password" name="password-field" id="password-field">
       <br>
-      <input type="submit">
+      <input type="button" value="Submit" (click)="submit()">
     </fieldset>
   </form>
 </div>
+
 <div>
-  <form action="/register" method="POST">
+  <form action="" method="">
     <fieldset>
       <legend>Register</legend>
-      <button>Register</button>
+      <input type="button" value="Submit" (click)="register()">
     </fieldset>
   </form>
 </div>
