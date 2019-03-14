@@ -1,5 +1,39 @@
 # Project2
 
+Look below for the old boilerplate aangular readme.
+
+# Using this repo
+
+## Building for production
+
+You'll need maven (3.6.0) and java (1.8) and npm (6.7.0).
+
+Then run the following commands:
+
+git clone https://github.com/1902-feb04-java/project-2-dungeon-delvers.git
+
+mvn initialize
+
+npm install
+
+ng build --prod
+
+mvn package
+
+java -jar target/*.jar
+
+## Developing Angular
+
+git clone https://github.com/1902-feb04-java/project-2-dungeon-delvers.git
+
+mvn initialize
+
+npm install
+
+ng serve
+
+#Angular README
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.3.
 
 ## Development server
