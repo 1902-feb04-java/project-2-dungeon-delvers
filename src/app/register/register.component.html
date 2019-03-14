@@ -1,0 +1,18 @@
+<div>
+  <form>
+    <fieldset>
+      
+      <legend>Register</legend>
+      <label>Username:</label>
+      <input (input)="username = $event.target.value" type="text">
+      <br>
+      <label>Password:</label>
+      <input (input)="password = $event.target.value"type="password">
+      <br>
+      <label>Email:</label>
+      <input (input)="email = $event.target.value" type="email">
+      <br>
+      <input type="button" value="Submit">
+    </fieldset>
+  </form>
+</div>
