@@ -43,6 +43,9 @@ secrets.yml
 # Angular/npm gitignore below
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
+# custom
+package-lock.json
+
 # compiled output
 /dist
 /tmp
