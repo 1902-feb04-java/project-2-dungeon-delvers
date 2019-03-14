@@ -1,0 +1,20 @@
+<div id="owner">
+  <h1>Campaign Name: {{campaign.name}}</h1>
+  <p>Dungeonn Master: {{campaign.owner.username}}</p>
+</div>
+
+<div id="Players">
+  <p *ngFor="let x of campaign.players">
+    Character: {{x}}
+  </p>
+</div>
+<div id="Encounter"></div>
+<div id="chat">
+  <textarea cols="80" rows= "20">
+    {{campaignChat}}
+  </textarea>
+  <form id="inputText" (click)="submitText($event.currentTarget)">
+    <input type="text" >
+    <input type="button" value="Submit">
+  </form>
+</div>
