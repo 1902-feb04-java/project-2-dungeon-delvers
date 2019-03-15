@@ -1,0 +1,34 @@
+<div>
+  <form>
+    <fieldset>
+      
+      <legend>Character Creation</legend>
+      
+      <label>Character Name</label>
+      <input (input)="name = $event.target.value" type="text">
+      <br>
+      
+      <label>Health Points</label>
+      <input (input)="hp = $event.target.value"type="text">
+      <br>
+      
+      <label>Armor Class</label>
+      <input (input)="ac= $event.target.value" type="text">
+      <br>
+      
+      <label>Damage Die </label>
+      <input (input)="dd= $event.target.value" type="text">
+      <br>
+      
+      <input type="button" value="Submit">
+
+    </fieldset>
+  </form>
+  
+  <h1> {{ name }}</h1>
+  
+  <p> HP: {{ hp }}</p>
+  <p> AC: {{ ac }}</p>
+  <p> Damage Die: {{ dd }}</p>
+</div>
+
