@@ -10,7 +10,7 @@ import { Account } from '../account';
 })
 export class RegisterFormComponent implements OnInit {
 
-  model = new Account(1, "adking01", "nerva", "adam@dnd.com");
+  model = new Account(0, "adking01", "nerva", "adam@dnd.com");
   submitted = false;
   post_result;
 

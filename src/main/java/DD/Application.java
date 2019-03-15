@@ -27,11 +27,6 @@ public class Application {
 //		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 //		ApplicationContext context = new AnnotationConfigApplicationContext(BeanConfig.class);
 //		ApplicationContext context = new AnnotationConfigApplicationContext(AutoConfig.class);
-		ApplicationContext context = new ClassPathXmlApplicationContext("autobeans.xml");
-		
-		AccountService accountService = (AccountService) context.getBean("accountservice");		
-		System.out.println(accountService.getAccounts());
-		
         SpringApplication.run(Application.class, args);
 //		((AbstractApplicationContext) context).close();
     }

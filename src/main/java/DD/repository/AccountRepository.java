@@ -1,24 +1,14 @@
 package DD.repository;
 
-
-import org.springframework.data.repository.PagingAndSortingRepository;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
-
-import
-
-@RepositoryRestResource(collectionResourceRel="artists", path="artists")
-public interface AccountRepository extends PagingAndSortingRepository<Account, Long>{
-
-}
-
-
-import java.util.ArrayList;
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import DD.entity.Account;
+
+@Repository
+public interface AccountRepository extends JpaRepository<Account, Long>{
+
+}
 
 //@Repository
 //public class AccountRepository {

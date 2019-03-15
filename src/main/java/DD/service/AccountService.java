@@ -21,6 +21,10 @@ public class AccountService {
 	}
 
 	public List<Account> getAccounts() {
-		return this.accountRepository.getAllAccounts();
+		return this.accountRepository.findAll();
+	}
+	
+	public String addAccount(Account o) {
+		return this.accountRepository.saveAndFlush(o).toString();
 	}
 }

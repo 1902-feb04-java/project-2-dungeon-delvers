@@ -19,6 +19,6 @@ export class RegisterService {
     let headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
     console.log(a.toString());
-    return this.http.post("/registerAccount", a, { responseType: "text", headers: headers });
+    return this.http.post("/accounts/post", a, { responseType: "text", headers: headers });
   }
 }
