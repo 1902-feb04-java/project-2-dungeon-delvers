@@ -5,19 +5,23 @@
       <legend>Character Creation</legend>
       
       <label>Character Name</label>
-      <input (input)="name = $event.target.value" type="text">
+      <input (input)="name = $event.target.value" type="text"  
+      class="form-control" id="pcName" required [(ngModel)]="model.name" name="pcName">
       <br>
       
       <label>Health Points</label>
-      <input (input)="hp = $event.target.value"type="text">
+      <input (input)="hp = $event.target.value"type="text" 
+      class="form-control" id="hp" required [(ngModel)]="model.hp" name="hp">
       <br>
       
       <label>Armor Class</label>
-      <input (input)="ac= $event.target.value" type="text">
+      <input (input)="ac= $event.target.value" type="text"
+      class="form-control" id="ac" required [(ngModel)]="model.ac" name="ac">
       <br>
       
       <label>Damage Die </label>
-      <input (input)="dd= $event.target.value" type="text">
+      <input (input)="dd= $event.target.value" type="text" 
+      class="form-control" id="dd" required [(ngModel)]="model.dd" name="dd">
       <br>
       
       <input type="button" value="Submit">
@@ -29,6 +33,10 @@
   
   <p> HP: {{ hp }}</p>
   <p> AC: {{ ac }}</p>
-  <p> Damage Die: {{ dd }}</p>
+  <p> Damage Di(c)e: {{ dd }}</p>
 </div>
+
+{{ diagnostic }}
+
+
 
