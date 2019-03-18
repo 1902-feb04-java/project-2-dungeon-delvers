@@ -10,6 +10,7 @@ import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { CampaignComponent } from './campaign/campaign.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
+import { ChatWindowComponent } from './chat-window/chat-window.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { RegisterFormComponent } from './register-form/register-form.component';
     RegisterComponent,
     HomeComponent,
     CampaignComponent,
-    RegisterFormComponent
+    RegisterFormComponent,
+    ChatWindowComponent
   ],
   imports: [
     BrowserModule,
