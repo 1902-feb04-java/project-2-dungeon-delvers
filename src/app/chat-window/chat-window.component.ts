@@ -25,7 +25,7 @@ export class ChatWindowComponent implements OnInit {
     this.stompClient = Stomp.over(ws);
     let that = this;
     this.stompClient.connect({}, function(frame) {
-      that.stompClient.subscribe("/topic", (message) => {
+      that.stompClient.subscribe("/topic/public", (message) => {
         if (message.body) {
           console.log(message.body);
           this.chatStrings.push(message.body);
