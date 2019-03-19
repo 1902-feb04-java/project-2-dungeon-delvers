@@ -6,7 +6,7 @@ import { Profile } from './profile';
   providedIn: 'root'
 })
 export class LoginService {
-  public myProfile:Profile;
+  public myProfile:Profile = null;
   constructor(private http:HttpClient) { }
 
   public sendAccount(username:String, password:String)
