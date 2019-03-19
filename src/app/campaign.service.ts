@@ -33,4 +33,5 @@ export class CampaignService {
     new Campaign( new Profile(null, null, null, true, "Fredrick", 3), ["Spencer", "John", "Adam"], "Fredrick's Campaign", 3),
     new Campaign( new Profile(null, null, null, true, "Spencer", 4), ["John", "Adam", "Fredrick"], "Spencer's Campaign", 4)
   ];
+  selectedCampaign:Campaign;
 }
