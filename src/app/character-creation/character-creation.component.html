@@ -1,39 +1,49 @@
 <div>
-  <form>
+  <form (ngSubmit)="onSubmit()" #characterCreation="ngForm">
     <fieldset>
       
       <legend>Character Creation</legend>
       
+      <label>Character Id </label>
+      <input (input)="dd= $event.target.value" type="text" 
+      class="form-control" id="chId" required [(ngModel)]="model.id" name="id">
+      <br>
+      
+      <label>User Id </label>
+      <input (input)="dd= $event.target.value" type="text" 
+      class="form-control" id="uId" required [(ngModel)]="model.playerAccount" name="playerAccount">
+      <br>
+
       <label>Character Name</label>
       <input (input)="name = $event.target.value" type="text"  
-      class="form-control" id="pcName" required [(ngModel)]="model.name" name="pcName">
+      class="form-control" id="pcName" required [(ngModel)]="model.characterName" name="characterName">
+      <br>
+      
+      <label>Campaign </label>
+      <input (input)="dd= $event.target.value" type="text" 
+      class="form-control" id="cId" required [(ngModel)]="model.campaignId" name="campaignId">
       <br>
       
       <label>Health Points</label>
       <input (input)="hp = $event.target.value"type="text" 
-      class="form-control" id="hp" required [(ngModel)]="model.hp" name="hp">
+      class="form-control" id="hp" required [(ngModel)]="model.healthPoints" name="healthPoints">
       <br>
       
       <label>Armor Class</label>
       <input (input)="ac= $event.target.value" type="text"
-      class="form-control" id="ac" required [(ngModel)]="model.ac" name="ac">
+      class="form-control" id="ac" required [(ngModel)]="model.armorClass" name="armorClass">
       <br>
       
       <label>Damage Die </label>
       <input (input)="dd= $event.target.value" type="text" 
-      class="form-control" id="dd" required [(ngModel)]="model.dd" name="dd">
+      class="form-control" id="dd" required [(ngModel)]="model.damageDie" name="damageDie">
       <br>
       
-      <input type="button" value="Submit">
+      <button type="submit">Submit</button>
 
     </fieldset>
   </form>
   
-  <h1> {{ name }}</h1>
-  
-  <p> HP: {{ hp }}</p>
-  <p> AC: {{ ac }}</p>
-  <p> Damage Di(c)e: {{ dd }}</p>
 </div>
 
 {{ diagnostic }}
