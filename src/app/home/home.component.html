@@ -1,16 +1,21 @@
-<div id="character-container">
-    <div *ngIf="loginService.myProfile != null">
-        <p *ngFor="let x of loginService.myProfile.characters">{{x.name}}</p>
+<div id="root" class="center">
+    <div class="container character">
+        <div *ngIf="loginService.myProfile != null">
+            <p *ngFor="let x of loginService.myProfile.characters">{{x.name}}</p>
+        </div>
+        <div class="center">
+            <button>Create Character</button>
+        </div>
     </div>
-</div>
-<div id="campaign-container">
-    <div *ngIf="loginService.myProfile != null">
-        <p *ngFor="let y of loginService.myProfile.campaigns">{{y.name}}</p>
+    <div class="container campaign">
+        <div *ngIf="loginService.myProfile != null">
+            <p *ngFor="let y of loginService.myProfile.campaigns">{{y.name}}</p>
+        </div>
     </div>
-</div>
-<div id="campaign-search-container">
-    <div *ngIf="campaignService.getCampaigns != null">
-        <p *ngFor="let z of campaignService.getCampaigns()">{{z.name}}</p>
+    <div class="container search">
+        <div *ngIf="campaignService.getCampaigns != null">
+            <p *ngFor="let z of campaignService.getCampaigns()">{{z.name}}</p>
+        </div>
+        <!-- <p class="label">hi {{myCampaigns}}</p> -->
     </div>
-    <!-- <p class="label">hi {{myCampaigns}}</p> -->
 </div>
