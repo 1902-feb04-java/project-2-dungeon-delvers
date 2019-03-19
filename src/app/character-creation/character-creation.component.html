@@ -5,37 +5,37 @@
       <legend>Character Creation</legend>
       
       <label>Character Id </label>
-      <input (input)="dd= $event.target.value" type="text" 
+      <input type="text" 
       class="form-control" id="chId" required [(ngModel)]="model.id" name="id">
       <br>
       
       <label>User Id </label>
-      <input (input)="dd= $event.target.value" type="text" 
+      <input type="text" 
       class="form-control" id="uId" required [(ngModel)]="model.playerAccount" name="playerAccount">
       <br>
 
       <label>Character Name</label>
-      <input (input)="name = $event.target.value" type="text"  
+      <input type="text"  
       class="form-control" id="pcName" required [(ngModel)]="model.characterName" name="characterName">
       <br>
       
       <label>Campaign </label>
-      <input (input)="dd= $event.target.value" type="text" 
+      <input type="text" 
       class="form-control" id="cId" required [(ngModel)]="model.campaignId" name="campaignId">
       <br>
       
       <label>Health Points</label>
-      <input (input)="hp = $event.target.value"type="text" 
+      <input type="text" 
       class="form-control" id="hp" required [(ngModel)]="model.healthPoints" name="healthPoints">
       <br>
       
       <label>Armor Class</label>
-      <input (input)="ac= $event.target.value" type="text"
+      <input type="number"
       class="form-control" id="ac" required [(ngModel)]="model.armorClass" name="armorClass">
       <br>
       
       <label>Damage Die </label>
-      <input (input)="dd= $event.target.value" type="text" 
+      <input type="text" 
       class="form-control" id="dd" required [(ngModel)]="model.damageDie" name="damageDie">
       <br>
       

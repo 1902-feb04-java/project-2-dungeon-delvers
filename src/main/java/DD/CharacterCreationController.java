@@ -9,9 +9,4 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RestController
 public class CharacterCreationController {
 
-    @PostMapping(path="/pccreation", consumes="text/plain")
-    public String req(@RequestBody String s) {
-    	System.out.println( "dope" + s);
-        return "dope" + s;
-    }
 }
