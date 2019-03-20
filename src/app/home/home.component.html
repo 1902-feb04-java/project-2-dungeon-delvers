@@ -1,7 +1,10 @@
 <div id="root" class="center">
     <div class="container character">
         <div *ngIf="loginService.myProfile != null">
-            <p *ngFor="let x of loginService.myProfile.characters">{{x.name}}</p>
+            <div *ngFor="let x of loginService.myProfile.characters">
+                
+                <button>{{x.name}}</button>
+            </div>
         </div>
         <div class="center">
             <button>Create Character</button>
@@ -9,12 +12,21 @@
     </div>
     <div class="container campaign">
         <div *ngIf="loginService.myProfile != null">
-            <p *ngFor="let y of loginService.myProfile.campaigns">{{y.name}}</p>
+            <div *ngFor="let y of loginService.myProfile.campaigns">
+                
+                <button (click)="campaignService.setSelectedCampaign(y)">{{y.name}}</button>
+            </div>
+        </div>
+        <div class="center">
+            <button (click)="toCampaignCreation()">Create Campaign</button>
         </div>
     </div>
     <div class="container search">
         <div *ngIf="campaignService.getCampaigns != null">
-            <p *ngFor="let z of campaignService.getCampaigns()">{{z.name}}</p>
+            <div *ngFor="let z of campaignService.getCampaigns()">
+                <button>{{z.name}}</button>
+            </div>
         </div>
     </div>
 </div>
+

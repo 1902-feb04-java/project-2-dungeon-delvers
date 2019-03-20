@@ -7,7 +7,10 @@ import { Profile } from './profile';
 })
 export class LoginService {
   public myProfile:Profile = null;
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) {
+    this.myProfile = this.getProfile();
+    console.log('wtf');
+   }
 
   public sendAccount(username:String, password:String)
   {
@@ -15,5 +18,9 @@ export class LoginService {
     this.http.post<Profile>("/accounts/check",object).subscribe(x=>{
       this.myProfile = x;
     });
+  }
+  public getProfile()
+  {
+    return new Profile([], [], [], false, 'Someone', 0);
   }
 }

@@ -1,13 +1,16 @@
 package DD.entity;
 
+
 import java.util.LinkedHashMap;
 
 import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
 
 import org.jboss.logging.Property;
 
@@ -87,4 +90,4 @@ public class Campaign {
 	public void setSaveState(String saveState) {
 		this.saveState = saveState;
 	}
-}
+
