@@ -54,12 +54,6 @@
 			<scope>runtime</scope>
 		</dependency>
 	</dependencies>
-		<!-- <dependency>
-		    <groupId>com.h2database</groupId>
-		    <artifactId>h2</artifactId>
-		    <scope>runtime</scope>
-		</dependency> -->
-    </dependencies>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
