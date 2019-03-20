@@ -1,9 +1,20 @@
-<div id="character-container">
-Character information.
-</div>
-<div id="campaign-container">
-Campaign information.
-</div>
-<div id="campaign-search-container">
-Campaign Search.
+<div id="root" class="center">
+    <div class="container character">
+        <div *ngIf="loginService.myProfile != null">
+            <p *ngFor="let x of loginService.myProfile.characters">{{x.name}}</p>
+        </div>
+        <div class="center">
+            <button routerLink="/pccreation">Create Character</button>
+        </div>
+    </div>
+    <div class="container campaign">
+        <div *ngIf="loginService.myProfile != null">
+            <p *ngFor="let y of loginService.myProfile.campaigns">{{y.name}}</p>
+        </div>
+    </div>
+    <div class="container search">
+        <div *ngIf="campaignService.getCampaigns != null">
+            <p *ngFor="let z of campaignService.getCampaigns()">{{z.name}}</p>
+        </div>
+    </div>
 </div>

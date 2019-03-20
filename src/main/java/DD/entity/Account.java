@@ -2,12 +2,19 @@ package DD.entity;
 
 import java.util.LinkedHashMap;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.jboss.logging.Property;
+
+
 
 @Entity
+@Table(name="account")
 public class Account {
 	@Override
 	public int hashCode() {
@@ -51,6 +58,7 @@ public class Account {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 	private String username;
+	@Column(name="pass")
 	private String password;
 	private String email;
 	public long getId() {

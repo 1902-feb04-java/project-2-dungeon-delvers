@@ -1,20 +1,23 @@
 import { Injectable } from '@angular/core';
 import {Campaign} from '../app/campaign';
 import { Profile } from './profile';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class CampaignService {
 
-  constructor() { }
-  public getCampaigns()
+  constructor(private http: HttpClient) { }
+  public getCampaigns(): Campaign[]
   {
-    //get all campaigns
+    return this.campaigns; //dont use this, use httpclient
   }
-  public getCampaignsfromOwner(playerId:number)
+  public getCampaignsfromOwner(playerId:number): Campaign[]
   {
-
+    return null;
   }
   public getCampaignbyId(campaignId:number)
   {
@@ -33,4 +36,5 @@ export class CampaignService {
     new Campaign( new Profile(null, null, null, true, "Fredrick", 3), ["Spencer", "John", "Adam"], "Fredrick's Campaign", 3),
     new Campaign( new Profile(null, null, null, true, "Spencer", 4), ["John", "Adam", "Fredrick"], "Spencer's Campaign", 4)
   ];
+  selectedCampaign:Campaign;
 }
