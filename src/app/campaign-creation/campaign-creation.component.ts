@@ -19,7 +19,7 @@ export class CampaignCreationComponent implements OnInit {
   }
   public submitCampaign()
   {
-    let c: Campaign = new Campaign(this.loginService.myProfile, [], this.name, 0);
+    let c: Campaign = new Campaign(this.loginService.myProfile.id, [], this.name, 0);
     this.loginService.myProfile.campaigns.push(c);
     this.campaignService.submitCampaign(c);
     this.router.navigateByUrl('home');

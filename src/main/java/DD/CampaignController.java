@@ -13,7 +13,7 @@ import DD.entity.Campaign;
 public class CampaignController {
 
 	
-	@PostMapping(consumes="application/json")
+	@PostMapping(path="/post", consumes="application/json")
     public void addCharacter(@RequestBody Campaign c) {
     	System.out.println(c.toString());
     	

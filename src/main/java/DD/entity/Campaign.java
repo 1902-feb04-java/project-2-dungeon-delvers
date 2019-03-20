@@ -11,7 +11,7 @@ import javax.persistence.Table;
 public class Campaign {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	private String name;
 	private String save_state;
