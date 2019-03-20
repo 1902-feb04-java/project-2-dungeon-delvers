@@ -26,6 +26,7 @@ export class ChatWindowComponent implements OnInit {
     let that = this;
     this.stompClient.connect({}, function(frame) {
       that.stompClient.subscribe("/topic/public", (message) => {
+        console.log(message);
         if (message.body) {
           console.log(message.body);
           
@@ -35,9 +36,8 @@ export class ChatWindowComponent implements OnInit {
   }
 
   sendMessage(message) {
-    
-    
-    let obj = {type: 0, message, sender: 'me'};
+    let obj = {type: 0, content: message, sender: 'me'};
+    console.log(obj);
     this.stompClient.send("/app/chat.sendMessage", null, JSON.stringify(obj) );
     console.log('sending message to' + this.stompClient.serverUrl);
   }

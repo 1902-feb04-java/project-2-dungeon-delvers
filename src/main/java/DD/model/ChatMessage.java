@@ -1,6 +1,11 @@
 package DD.model;
 
 public class ChatMessage {
+	@Override
+	public String toString() {
+		return "ChatMessage [type=" + type + ", content=" + content + ", sender=" + sender + "]";
+	}
+
 	private MessageType type;
 	private String content;
 	private String sender;
