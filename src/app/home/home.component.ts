@@ -13,7 +13,9 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
   // public myProfile:Profile;
   // public myCampaigns: Campaign[];
+
   constructor(public campaignService:CampaignService, public loginService:LoginService, private router:Router) { }
+
 
   ngOnInit() {
     // this.myProfile = this.loginService.myProfile;
