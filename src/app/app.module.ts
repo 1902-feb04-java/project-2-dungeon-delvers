@@ -12,6 +12,7 @@ import { CampaignComponent } from './campaign/campaign.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { CharacterComponent } from './character/character.component';
 import { CharacterCreationComponent } from './character-creation/character-creation.component';
+import { EncounterCreationComponent } from './encounter-creation/encounter-creation.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { CharacterCreationComponent } from './character-creation/character-creat
     CampaignComponent,
     RegisterFormComponent,
     CharacterComponent,
-    CharacterCreationComponent
+    CharacterCreationComponent,
+    EncounterCreationComponent
   ],
   imports: [
     BrowserModule,
