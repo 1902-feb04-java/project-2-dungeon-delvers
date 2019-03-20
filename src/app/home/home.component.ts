@@ -12,7 +12,7 @@ import { Campaign } from '../campaign';
 export class HomeComponent implements OnInit {
   // public myProfile:Profile;
   // public myCampaigns: Campaign[];
-  constructor(private campaignService:CampaignService, private loginService:LoginService) { }
+  constructor(public campaignService:CampaignService, public loginService:LoginService) { }
 
   ngOnInit() {
     // this.myProfile = this.loginService.myProfile;
