@@ -7,11 +7,13 @@ import { CampaignComponent } from './campaign/campaign.component';
 import { CharacterComponent } from './character/character.component';
 import { CharacterCreationComponent } from './character-creation/character-creation.component';
 import { MonsterCreationComponent } from './monster-creation/monster-creation.component';
+import { RegisterFormComponent } from './register-form/register-form.component';
 
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
+  {path: 'register-form', component: RegisterFormComponent},
   {path: 'home', component: HomeComponent},
   {path: 'campaign', component: CampaignComponent},
   {path: 'character', component: CharacterComponent},

@@ -13,6 +13,10 @@ import { RegisterFormComponent } from './register-form/register-form.component';
 import { CharacterComponent } from './character/character.component';
 import { CharacterCreationComponent } from './character-creation/character-creation.component';
 import { MonsterCreationComponent } from './monster-creation/monster-creation.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NavComponent } from './nav/nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -24,13 +28,21 @@ import { MonsterCreationComponent } from './monster-creation/monster-creation.co
     RegisterFormComponent,
     CharacterComponent,
     CharacterCreationComponent,
-    MonsterCreationComponent
+    MonsterCreationComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
