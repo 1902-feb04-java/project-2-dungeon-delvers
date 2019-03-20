@@ -10,6 +10,7 @@ import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { CampaignComponent } from './campaign/campaign.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
+import { ChatWindowComponent } from './chat-window/chat-window.component';
 import { CharacterComponent } from './character/character.component';
 import { CharacterCreationComponent } from './character-creation/character-creation.component';
 import { MonsterCreationComponent } from './monster-creation/monster-creation.component';
@@ -26,6 +27,7 @@ import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, Mat
     HomeComponent,
     CampaignComponent,
     RegisterFormComponent,
+    ChatWindowComponent,
     CharacterComponent,
     CharacterCreationComponent,
     MonsterCreationComponent,
