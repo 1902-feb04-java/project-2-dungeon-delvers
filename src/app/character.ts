@@ -1,13 +1,15 @@
 export class Character {
     constructor(
         public id: number,
+        public playerAccount: number,
         
-        public account: string,
-        public name: string,
+        public characterName: string,
+
+        public campaignId: number,
         
-        public hp: number,
-        public ac: number,
-        public dd: number,
+        public healthPoints: number,
+        public armorClass: number,
+        public damageDie: number,
         
     ) {}
 }

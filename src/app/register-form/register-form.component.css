@@ -1,0 +1,29 @@
+fieldset {
+    display: block;
+    width: 25%;
+}
+.center {
+    margin: auto;
+    width: 50%;
+    text-align: center;
+    
+}
+#root {
+    background-color: black;
+    background-image: url(../img/login.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+}
+.centerY {
+    transform: translateY(50%);
+}
+.colorBackground {
+    background-color: rgba(209, 167, 167, 0.8);
+}
+form {
+    display: block;
+    width: 50%;
+    margin:auto;
+}

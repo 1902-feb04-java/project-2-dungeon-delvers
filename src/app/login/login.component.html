@@ -1,23 +1,27 @@
-<div>
-  <form method="">
-    <fieldset>
-      <legend>Login:</legend>
-      <label for="username-field">Login:</label>
-      <input (input)="username = $event.target.value" type="text" name="username-field" id="username-field">
-      <br>
-      <label for="password-field">Password:</label>
-      <input (input)="password = $event.target.value" type="password" name="password-field" id="password-field">
-      <br>
-      <input type="button" value="Submit" (click)="submit()">
-    </fieldset>
-  </form>
-</div>
+<div id=root>
+  <div class="centerY">
+    <div class="center ">
+      <form method="" class="center colorBackground">
+        <fieldset class="center">
+          <legend>Login:</legend>
+          <label for="username-field">Login:</label>
+          <input (input)="username = $event.target.value" type="text" name="username-field" id="username-field">
+          <br>
+          <label for="password-field">Password:</label>
+          <input (input)="password = $event.target.value" type="password" name="password-field" id="password-field">
+          <br>
+          <input type="button" value="Submit" (click)="submit()">
+        </fieldset>
+      </form>
+    </div>
 
-<div>
-  <form action="" method="">
-    <fieldset>
-      <legend>Register</legend>
-      <input type="button" value="Submit" (click)="register()">
-    </fieldset>
-  </form>
+    <div class="center">
+      <form action="" class="center colorBackground" method="">
+        <fieldset class="center">
+          <legend>Register</legend>
+          <input type="button" value="Submit" (click)="register()">
+        </fieldset>
+      </form>
+    </div>
+  </div>
 </div>
