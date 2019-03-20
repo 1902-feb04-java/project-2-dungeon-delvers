@@ -3,6 +3,7 @@ import { CampaignService } from '../campaign.service';
 import { Profile } from '../profile';
 import { LoginService } from '../login.service';
 import { Campaign } from '../campaign';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -12,12 +13,15 @@ import { Campaign } from '../campaign';
 export class HomeComponent implements OnInit {
   // public myProfile:Profile;
   // public myCampaigns: Campaign[];
-  constructor(public campaignService:CampaignService, public loginService:LoginService) { }
+  constructor(public campaignService:CampaignService, public loginService:LoginService, private router:Router) { }
 
   ngOnInit() {
     // this.myProfile = this.loginService.myProfile;
     // this.myCampaigns = this.campaignService.getCampaigns(); 
-    
+    console.log(this.loginService.myProfile);
   }
-
+ public toCampaignCreation()
+ {
+   this.router.navigateByUrl("campaign/create");
+ }
 }

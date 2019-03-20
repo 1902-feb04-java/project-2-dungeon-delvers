@@ -30,6 +30,15 @@ export class CampaignService {
     }
     return null;
   }
+  public setSelectedCampaign(campaign: Campaign)
+  {
+    this.selectedCampaign = campaign;
+    console.log(campaign.name);
+  }
+  public submitCampaign(c: Campaign)
+  {
+    this.http.post<Campaign>('/campaign', c);
+  }
   campaigns:Campaign[] = [
     new Campaign( new Profile(null, null, null, true, "John", 1), ["Adam", "Fredrick", "Spencer"], "John's Campaign", 1),
     new Campaign( new Profile(null, null, null, true, "Adam", 2), ["Fredrick", "Spencer", "John"], "Adam's Campaign", 2),
