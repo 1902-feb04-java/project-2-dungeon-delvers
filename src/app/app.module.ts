@@ -10,11 +10,17 @@ import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { CampaignComponent } from './campaign/campaign.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
+import { ChatWindowComponent } from './chat-window/chat-window.component';
 import { CharacterComponent } from './character/character.component';
 import { CharacterCreationComponent } from './character-creation/character-creation.component';
 import { EncounterCreationComponent } from './encounter-creation/encounter-creation.component';
 import { MonsterCreationComponent } from './monster-creation/monster-creation.component';
 import { CampaignCreationComponent } from './campaign-creation/campaign-creation.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NavComponent } from './nav/nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
+import { EncounterWindowComponent } from './encounter-window/encounter-window.component';
 
 @NgModule({
   declarations: [
@@ -24,18 +30,28 @@ import { CampaignCreationComponent } from './campaign-creation/campaign-creation
     HomeComponent,
     CampaignComponent,
     RegisterFormComponent,
+    ChatWindowComponent,
     CharacterComponent,
     CharacterCreationComponent,
     EncounterCreationComponent,
     MonsterCreationComponent,
-    CampaignCreationComponent
-
+    CampaignCreationComponent,
+    MonsterCreationComponent,
+    NavComponent,
+    EncounterWindowComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
