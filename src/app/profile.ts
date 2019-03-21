@@ -2,18 +2,20 @@ import { Campaign } from "./campaign";
 
 export class Profile 
 {
-    characters:String[]; //needs to be of character type.
+    characters:string[]; //needs to be of character type.
     campaigns:Campaign[]; //needs to be of type Campaign.
-    encounters:String[]; // needs to be of type encounter.
+    encounters:string[]; // needs to be of type encounter.
     status:boolean; // false == offline, true == online
-    username:String;
+    username:string;
     id:number;
-    constructor(ch:String[], ca:Campaign[], e:String[], s:boolean, u:String, id:number){
+    password:string;
+    constructor(ch:string[], ca:Campaign[], e:string[], s:boolean, u:string, id:number, password:string = ""){
         this.characters = ch;
         this.campaigns = ca;
         this.encounters = e;
         this.status = s;
         this.username = u;
         this.id = id;
+        this.password = password;
     }
 }

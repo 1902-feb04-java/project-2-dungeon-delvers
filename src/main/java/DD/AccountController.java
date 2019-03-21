@@ -78,7 +78,7 @@ public class AccountController {
 		{
 			nullMonsters = true;
 		}
-		Profile p = new Profile(a, false ? null :userCampaigns, characters, m);
+		Profile p = new Profile(a, userCampaigns, characters, m);
 		
 		
 		System.out.println(p.toString());

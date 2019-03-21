@@ -10,6 +10,7 @@ import { routerNgProbeToken } from '@angular/router/src/router_module';
 })
 export class LoginService {
   public myProfile:Profile = null;
+  
   constructor(private http:HttpClient, private router:Router) {
     this.myProfile = this.getProfile();
     console.log('wtf');
@@ -19,10 +20,17 @@ export class LoginService {
   {
     let object:Account = new Account(0, username, password, null);
     this.http.post<Profile>("accounts/login",object).subscribe(x=>{
-      console.log(x + "in here");
+     // console.log(JSON.stringify(x) + "in here");
       if (x)
       {
+        this.myProfile.id = x.id;
+        this.myProfile.campaigns = x.campaigns;
+        this.myProfile.characters = x.characters;
+        this.myProfile.username = x.username;
+        this.myProfile.password = x.password;
+        console.log(JSON.stringify(this.myProfile));
         this.router.navigateByUrl('/home');
+        
       }
     });
   }
