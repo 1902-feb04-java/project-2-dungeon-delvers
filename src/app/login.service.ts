@@ -18,7 +18,7 @@ export class LoginService {
   public login(username:string, password:string)
   {
     let object:Account = new Account(0, username, password, null);
-    this.http.post<Profile>("/login",object).subscribe(x=>{
+    this.http.post<Profile>("accounts/login",object).subscribe(x=>{
       console.log(x + "in here");
       if (x)
       {
