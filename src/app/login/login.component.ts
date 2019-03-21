@@ -7,8 +7,8 @@ import { LoginService } from '../login.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  username: String;  
-  password: String;
+  username: string;  
+  password: string;
   constructor(private service: LoginService) {
     
    }
@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
 
   public submit()
   {
-    window.location.href = "home";
+    this.service.login(this.username, this.password);
   }
   public register()
   {
