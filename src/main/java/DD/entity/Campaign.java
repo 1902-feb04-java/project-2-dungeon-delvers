@@ -90,4 +90,5 @@ public class Campaign {
 	public void setSaveState(String saveState) {
 		this.saveState = saveState;
 	}
+}
 

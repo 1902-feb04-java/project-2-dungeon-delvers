@@ -2,21 +2,28 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Profile } from './profile';
+import { Account } from './account';
+import {Router} from '@angular/router'
+import { routerNgProbeToken } from '@angular/router/src/router_module';
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
   public myProfile:Profile = null;
-  constructor(private http:HttpClient) {
+  constructor(private http:HttpClient, private router:Router) {
     this.myProfile = this.getProfile();
     console.log('wtf');
    }
 
-  public sendAccount(username:String, password:String)
+  public login(username:string, password:string)
   {
-    let object = {username , password};
-    this.http.post<Profile>("/accounts/check",object).subscribe(x=>{
-      this.myProfile = x;
+    let object:Account = new Account(0, username, password, null);
+    this.http.post<Profile>("/login",object).subscribe(x=>{
+      console.log(x + "in here");
+      if (x)
+      {
+        this.router.navigateByUrl('/home');
+      }
     });
   }
   public getProfile()
