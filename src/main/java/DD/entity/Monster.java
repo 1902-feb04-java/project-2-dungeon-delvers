@@ -31,21 +31,13 @@ public class Monster {
 	@Column(name="hp")
 	private int hp;
 	@Column(name="account_id")
-	private int accountId;
+	private int accountId = 0;
 	@Override
 	public String toString() {
 		return "Monster [id=" + id + ", name=" + name + ", damageDie=" + damageDie + ", ac=" + ac + ", hp=" + hp
 				+ ", account_id=" + accountId + "]";
 	}
-	public Monster(long id, String name, int damageDie, int ac, int hp, int account_id) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.damageDie = damageDie;
-		this.ac = ac;
-		this.hp = hp;
-		this.accountId = account_id;
-	}
+	
 	public long getId() {
 		return id;
 	}
@@ -81,6 +73,20 @@ public class Monster {
 	}
 	public void setAccount_id(int account_id) {
 		this.accountId = account_id;
+	}
+	public Monster(long id, String name, int damageDie, int ac, int hp, int accountId) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.damageDie = damageDie;
+		this.ac = ac;
+		this.hp = hp;
+		this.accountId = accountId;
+	}
+
+	public Monster() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 	
 	
