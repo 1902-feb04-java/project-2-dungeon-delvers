@@ -18,5 +18,12 @@ export class CharacterCreationService {
     return this.http.post("/characters/post", c, { responseType: "text", headers: headers });
   }
 
+  getCharacter(c:Character): Observable<any> {
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    console.log(c.toString());
+    return this.http.get("characters/get", { responseType: "text", headers: headers });
+  }
+
  
 }

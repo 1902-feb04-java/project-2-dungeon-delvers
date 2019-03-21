@@ -1,3 +1,36 @@
-<p>
-  encounter-creation works!
-</p>
+<div>
+  <form (ngSubmit)="onSubmit()" #characterCreation="ngForm">
+    <fieldset>
+     
+      <legend>Encounter Creation</legend>
+      
+      <label>Encounter Id</label>
+      <input type="number" 
+      class="form-control" id="enId" required [(ngModel)]="model.id" name="id">
+      <br>
+      
+      <label>Encounter Name</label>
+      <input type="text"  
+      class="form-control" id="encName" required [(ngModel)]="model.encounterName" name="encounterName">
+      <br>
+
+      <label>Campaign Id</label>
+      <input type="number" 
+      class="form-control" id="cId" required [(ngModel)]="model.campaignId" name="campaignId">
+      <br>
+      
+      <label>User Id</label>
+      <input type="number" 
+      class="form-control" id="uId" required [(ngModel)]="model.userId" name="userId">
+      <br>
+      
+      <label>Monsters</label>
+      <input type="text" 
+      class="form-control" id="mons" required [(ngModel)]="model.monsters" name="monsters">
+
+      <button type="submit">Submit</button>
+
+    </fieldset>
+  </form>
+  
+</div>
