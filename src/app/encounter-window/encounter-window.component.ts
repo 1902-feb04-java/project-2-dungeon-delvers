@@ -3,6 +3,7 @@ import * as Stomp from '@stomp/stompjs';
 import * as SockJS from 'sockjs-client';
 
 import { Message } from '../message';
+import { Monster } from '../monster';
 
 @Component({
   selector: 'app-encounter-window',
@@ -13,7 +14,9 @@ export class EncounterWindowComponent implements OnInit {
   private serverUrl = '/ws';
   private stompClient;
 
-  public messages: Array<Message> = [];
+  public messages: Array<Message> = [new Message("CHAT", "woot2", "hardcodetest")];
+  public monsters: Array<Monster> = [new Monster(-1, "Goblin1", -1, 14, 10),
+      new Monster(-1, "Goblin2", -1, 14, 10)]; 
 
   constructor() {
     this.initializeWebSocketConnection();
@@ -34,12 +37,21 @@ export class EncounterWindowComponent implements OnInit {
     });
   }
 
-  sendMessage(cont, typenum=0, user='DefaultUser') {
-    // kept as basic object because of interaction with enum for type
-    let obj = {type: typenum, content: cont, sender: user};
-    this.stompClient.send("/app/chat.sendMessage", null, JSON.stringify(obj) );
+  sendState(state, typenum=0, user='DefaultUser') {
+    let obj = {type: typenum, content: JSON.stringify(state), sender: user};
+    this.stompClient.send("/app/enc.sendMessage", null, JSON.stringify(obj) );
     console.log('sending message to' + this.stompClient.serverUrl);
     console.log(JSON.stringify(obj));
   }
+
+  sendMessage(cont, typenum=0, user='DefaultUser') {
+    // kept as basic object because of interaction with enum for type
+    let obj = {type: typenum, content: cont, sender: user};
+    this.stompClient.send("/app/enc.sendMessage", null, JSON.stringify(obj) );
+    console.log('sending message to' + this.stompClient.serverUrl);
+    console.log(JSON.stringify(obj));
+  }
+
+  get diagnostic() { return JSON.stringify(this.monsters); }
 
 }

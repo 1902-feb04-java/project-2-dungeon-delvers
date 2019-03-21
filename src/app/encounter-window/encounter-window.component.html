@@ -1,3 +1,19 @@
-<p>
-  encounter-window works!
-</p>
+<fieldset>
+  <legend>Encounter Window</legend>
+
+  <form #monsterList="ngForm" (ngSubmit)="sendState(monsters)">
+    <div *ngFor="let monster of monsters">
+      <fieldset>
+        <legend>{{monster.name}}</legend>
+      <b>HP</b>
+      <input type="number" name={{monster.name}}_hp [(ngModel)]="monster.hp">
+      <b>AC</b>
+      <input type="number" name={{monster.name}}_ac [(ngModel)]="monster.ac">
+    </fieldset>
+    </div>
+    <button type="submit">Send State</button>
+   </form>
+
+   <br> Diagnostic: {{ diagnostic }}
+
+</fieldset>
