@@ -8,6 +8,7 @@ import { CharacterComponent } from './character/character.component';
 import { CharacterCreationComponent } from './character-creation/character-creation.component';
 import { MonsterCreationComponent } from './monster-creation/monster-creation.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
+import { ChatWindowComponent } from './chat-window/chat-window.component';
 
 
 const routes: Routes = [
@@ -18,7 +19,8 @@ const routes: Routes = [
   {path: 'campaign', component: CampaignComponent},
   {path: 'character', component: CharacterComponent},
   {path: 'pccreation', component: CharacterCreationComponent},
-  {path: 'monstercreation', component: MonsterCreationComponent}
+  {path: 'monstercreation', component: MonsterCreationComponent},
+  {path: 'chat-window', component: ChatWindowComponent}
 ];
 
 @NgModule({

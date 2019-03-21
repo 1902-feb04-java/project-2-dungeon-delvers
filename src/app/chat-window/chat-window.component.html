@@ -1,7 +1,10 @@
-<p>
-  chat-window works!
-</p>
+<div *ngFor="let string of chatStrings">
+  <b>{{ string }}</b>
+</div>
+<input #msg
+(keyup.enter)="sendMessage(msg.value)"
+(blur)="sendMessage(msg.value); msg.value='' ">
 
-{{ chatStrings }}
+<button (click)="sendMessage(msg.value)">Send</button>
 
 <button (click)="sendMessage('goof')">send goof</button>

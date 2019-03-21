@@ -13,6 +13,7 @@ export class ChatWindowComponent implements OnInit {
   private stompClient;
 
   public chatStrings = ["first_string", "second_string"];
+  public chatUsers = ["test1", "test2"];
 
   constructor() {
     this.initializeWebSocketConnection();
@@ -28,15 +29,15 @@ export class ChatWindowComponent implements OnInit {
       that.stompClient.subscribe("/topic/public", (message) => {
         console.log(message);
         if (message.body) {
-          console.log(message.body);
-          
+          that.chatStrings.push(JSON.parse(message.body)['content']);
+          that.chatUsers.push(message.body['sender']);
         }
       });
     });
   }
 
-  sendMessage(message) {
-    let obj = {type: 0, content: message, sender: 'me'};
+  sendMessage(message, user='me') {
+    let obj = {type: 0, content: message, sender: user};
     console.log(obj);
     this.stompClient.send("/app/chat.sendMessage", null, JSON.stringify(obj) );
     console.log('sending message to' + this.stompClient.serverUrl);
