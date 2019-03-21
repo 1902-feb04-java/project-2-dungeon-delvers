@@ -13,6 +13,8 @@ export class EncounterCreationService {
     let headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
     console.log(e.toString());
-    return this.http.post("/characters/post", e, { responseType: "text", headers: headers });
+    return this.http.post("/encounters/post", e, { responseType: "text", headers: headers });
   }
+
+  
 }

@@ -9,7 +9,7 @@ import { EncounterCreationService } from '../encounter-creation.service';
 })
 export class EncounterCreationComponent implements OnInit {
   model = new Encounter(2, "Kobold Ambush",3, 2, 
-  "{kobold-1:\"grundl\", kobold-2: \"brigguth\", kobold-3: \"fink\"}" );
+  "snarf" );
   submitted = false;
   post_result: any;
 

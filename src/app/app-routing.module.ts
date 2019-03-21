@@ -6,7 +6,12 @@ import { HomeComponent } from './home/home.component';
 import { CampaignComponent } from './campaign/campaign.component';
 import { CharacterComponent } from './character/character.component';
 import { CharacterCreationComponent } from './character-creation/character-creation.component';
+
+import { EncounterCreationComponent } from './encounter-creation/encounter-creation.component';
+
 import { MonsterCreationComponent } from './monster-creation/monster-creation.component';
+
+
 
 
 const routes: Routes = [
@@ -16,8 +21,9 @@ const routes: Routes = [
   {path: 'campaign', component: CampaignComponent},
   {path: 'character', component: CharacterComponent},
   {path: 'pccreation', component: CharacterCreationComponent},
+
+  {path: 'enccreation', component: EncounterCreationComponent}
   {path: 'monstercreation', component: MonsterCreationComponent}
-];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
