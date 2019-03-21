@@ -30,88 +30,64 @@ public class Monster {
 	
 	@Column(name="hp")
 	private int hp;
-	
-	//Autogenned:
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ac;
-		result = prime * result + damageDie;
-		result = prime * result + hp;
-		result = prime * result + (int) (id ^ (id >>> 32));
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Monster other = (Monster) obj;
-		if (ac != other.ac)
-			return false;
-		if (damageDie != other.damageDie)
-			return false;
-		if (hp != other.hp)
-			return false;
-		if (id != other.id)
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		return true;
-	}
-
+	@Column(name="account_id")
+	private int accountId = 0;
 	@Override
 	public String toString() {
 		return "Monster [id=" + id + ", name=" + name + ", damageDie=" + damageDie + ", ac=" + ac + ", hp=" + hp
-				+ "]";
+				+ ", account_id=" + accountId + "]";
 	}
-
+	
 	public long getId() {
 		return id;
 	}
-
 	public void setId(long id) {
 		this.id = id;
 	}
-
 	public String getName() {
 		return name;
 	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
 	public int getDamageDie() {
 		return damageDie;
 	}
-
 	public void setDamageDie(int damageDie) {
 		this.damageDie = damageDie;
 	}
-
 	public int getAc() {
 		return ac;
 	}
-
 	public void setAc(int ac) {
 		this.ac = ac;
 	}
-
 	public int getHp() {
 		return hp;
 	}
-
 	public void setHp(int hp) {
 		this.hp = hp;
 	}
+	public int getAccount_id() {
+		return accountId;
+	}
+	public void setAccount_id(int account_id) {
+		this.accountId = account_id;
+	}
+	public Monster(long id, String name, int damageDie, int ac, int hp, int accountId) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.damageDie = damageDie;
+		this.ac = ac;
+		this.hp = hp;
+		this.accountId = accountId;
+	}
+
+	public Monster() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
 }

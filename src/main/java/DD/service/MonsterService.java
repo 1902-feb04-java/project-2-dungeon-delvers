@@ -27,5 +27,9 @@ public class MonsterService {
 	public String addMonster(Monster m) {
 		return this.mr.saveAndFlush(m).toString();
 	}
+	public Monster[] getMonstersByAccountId(int id)
+	{
+		return this.mr.findAllMonstersByAccountId(id);
+	}
 }
 

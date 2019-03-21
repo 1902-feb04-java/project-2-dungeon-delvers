@@ -1,5 +1,6 @@
 package DD.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,5 +37,24 @@ public class CampaignService {
 	
 	public String addCampaign(Campaign c) {
 		return this.cmr.saveAndFlush(c).toString();
+	}
+	public Campaign[] getCampaignsByIds(int[] id)
+	{
+		ArrayList<Campaign> c = new ArrayList<Campaign>();
+		for(int i : id)
+		{
+			Campaign ca = getCampaignById(i);
+			if (ca != null)
+			{
+				c.add(ca);
+			}
+		}
+		Campaign[] toArr = new Campaign[c.size()];
+		toArr = c.toArray(toArr);
+		return toArr;
+	}
+	public Campaign getCampaignById(int id)
+	{
+		return cmr.getOne((long) id);
 	}
 }

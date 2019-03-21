@@ -43,3 +43,15 @@
 .colorBackground {
     background-color: rgba(209, 167, 167, 0.8);
 }
+.homeIcon {
+    background-color: white;
+    border-width: 5px;
+    margin: 5px;
+}
+p {
+    display: inline-block;
+    margin: 5px;
+}
+button {
+    margin: 5px;
+}

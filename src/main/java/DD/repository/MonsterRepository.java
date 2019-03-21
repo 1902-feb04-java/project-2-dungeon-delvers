@@ -7,5 +7,5 @@ import DD.entity.Monster;
 
 @Repository
 public interface MonsterRepository extends JpaRepository<Monster, Long> {
-
+	Monster[] findAllMonstersByAccountId(int id);
 }
