@@ -7,5 +7,5 @@ import DD.entity.Character;
 
 @Repository
 public interface CharacterRepository extends JpaRepository<Character, Long>{
-
+	Character[] findAllByPlayerAccount(int id);
 }
