@@ -18,12 +18,11 @@ import DD.service.AccountService;
 
 @SpringBootApplication
 public class Application {
-
+	
     public static void main(String[] args) {
-
+    	
 //		ArtistRepository artistRepository = new ArtistRepository();
 //		ArtistService artistService = new ArtistService(artistRepository);
-		
 //		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 //		ApplicationContext context = new AnnotationConfigApplicationContext(BeanConfig.class);
 //		ApplicationContext context = new AnnotationConfigApplicationContext(AutoConfig.class);
@@ -34,15 +33,12 @@ public class Application {
     @Bean
     public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
         return args -> {
-
             System.out.println("Let's inspect the beans provided by Spring Boot:");
-
             String[] beanNames = ctx.getBeanDefinitionNames();
             Arrays.sort(beanNames);
             for (String beanName : beanNames) {
                 System.out.println(beanName);
             }
-
         };
     }
 }

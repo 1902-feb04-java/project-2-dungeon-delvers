@@ -27,4 +27,12 @@ public class AccountService {
 	public String addAccount(Account o) {
 		return this.accountRepository.saveAndFlush(o).toString();
 	}
+	public Account getAccount(int id)
+	{
+		return this.accountRepository.getOne((long) id);
+	}
+	public Account getAccount(String username, String password)
+	{
+		return accountRepository.findByUsernameAndPassword(username, password);
+	}
 }

@@ -35,4 +35,8 @@ public class CharacterService {
 	public String addCharacter(Character c) {
 		return this.cr.saveAndFlush(c).toString();
 	}
+	public Character[] getCharactersByAccountId(int id)
+	{
+		return cr.findAllByPlayerAccount(id);
+	}
 }
