@@ -1,10 +1,18 @@
-<div *ngFor="let string of chatStrings">
-  <b>{{ string }}</b>
+<fieldset>
+  <legend>Chat Window</legend>
+<div *ngFor="let message of messages">
+  <b *ngIf="message.type==='CHAT'">{{ message.sender }} says {{ message.content }}</b>
+  <b *ngIf="message.type==='DICE'">{{ message.sender }} rolled a {{ message.content }}</b>
 </div>
-<input #msg
-(keyup.enter)="sendMessage(msg.value)"
-(blur)="sendMessage(msg.value); msg.value='' ">
+<input #msg>
 
 <button (click)="sendMessage(msg.value)">Send</button>
 
 <button (click)="sendMessage('goof')">send goof</button>
+<br>
+<input #dice type="number" min="2" max="100">
+
+<button (click)="rollDie(dice.value)">Roll!</button>
+</fieldset>
+
+<app-encounter-window></app-encounter-window>

@@ -5,15 +5,15 @@ import * as SockJS from 'sockjs-client';
 import { Message } from '../message';
 
 @Component({
-  selector: 'app-chat-window',
-  templateUrl: './chat-window.component.html',
-  styleUrls: ['./chat-window.component.css']
+  selector: 'app-encounter-window',
+  templateUrl: './encounter-window.component.html',
+  styleUrls: ['./encounter-window.component.css']
 })
-export class ChatWindowComponent implements OnInit {
+export class EncounterWindowComponent implements OnInit {
   private serverUrl = '/ws';
   private stompClient;
 
-  public messages: Array<Message> = [new Message("CHAT", "woot", "hardcodetest")];
+  public messages: Array<Message> = [];
 
   constructor() {
     this.initializeWebSocketConnection();
@@ -26,7 +26,7 @@ export class ChatWindowComponent implements OnInit {
     this.stompClient = Stomp.Stomp.over(ws);
     let that = this; //this line is horrid
     this.stompClient.connect({}, function(frame) {
-      that.stompClient.subscribe("/topic/public", (message) => {
+      that.stompClient.subscribe("/topic/encounter", (message) => {
         if (message.body) {
           that.messages.push(JSON.parse(message.body));
         }
@@ -39,14 +39,6 @@ export class ChatWindowComponent implements OnInit {
     let obj = {type: typenum, content: cont, sender: user};
     this.stompClient.send("/app/chat.sendMessage", null, JSON.stringify(obj) );
     console.log('sending message to' + this.stompClient.serverUrl);
-    console.log(JSON.stringify(obj));
-  }
-
-  rollDie(cont, typenum=3, user='DefaultUser') {
-    this.sendMessage("I'm rolling a d" + cont.toString() + "...")
-    let obj = {type: typenum, content: cont.toString(), sender: user};
-    this.stompClient.send("/app/chat.rollDie", null, JSON.stringify(obj));
-    console.log('sending dice message to' + this.stompClient.serverUrl);
     console.log(JSON.stringify(obj));
   }
 

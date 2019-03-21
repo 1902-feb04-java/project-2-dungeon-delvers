@@ -18,6 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavComponent } from './nav/nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
+import { EncounterWindowComponent } from './encounter-window/encounter-window.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, Mat
     CharacterComponent,
     CharacterCreationComponent,
     MonsterCreationComponent,
-    NavComponent
+    NavComponent,
+    EncounterWindowComponent
   ],
   imports: [
     BrowserModule,
