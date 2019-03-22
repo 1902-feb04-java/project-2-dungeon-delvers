@@ -14,6 +14,8 @@ import javax.persistence.Table;
 
 import org.jboss.logging.Property;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 @Table(name="campaigns")
 public class Campaign {

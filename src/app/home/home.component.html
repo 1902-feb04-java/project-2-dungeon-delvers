@@ -14,7 +14,7 @@
         <div *ngIf="loginService.myProfile != null">
             <div *ngFor="let y of loginService.myProfile.campaigns">
                 
-                <button (click)="campaignService.setSelectedCampaign(y)">{{y.name}}</button>
+                <button (click)="campaignService.setSelectedCampaign(y)">{{y.campaignName}}</button>
             </div>
         </div>
         <div class="center">
