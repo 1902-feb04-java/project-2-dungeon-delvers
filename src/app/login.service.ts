@@ -34,7 +34,7 @@ export class LoginService {
         this.myAccount.username = o.account.username;
         this.myAccount.password = o.account.password;
         this.myAccount.id = o.account.id;
-        console.log(JSON.stringify(this.myAccount) + '\n' + JSON.stringify(this.myProfile));
+        //console.log(JSON.stringify(this.myAccount) + '\n' + JSON.stringify(this.myProfile));
         this.router.navigateByUrl('/home');
         
       }
