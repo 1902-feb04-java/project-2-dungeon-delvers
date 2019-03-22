@@ -1,6 +1,8 @@
 <fieldset>
   <legend>Encounter Window</legend>
 
+  <b>Current Turn: {{state.turn.pos}}</b>
+  <h3 *ngIf="state.turn.turns[state.turn.pos] === ls.myProfile.id">It's your turn!</h3>
   <form #monsterList="ngForm" (ngSubmit)="sendState(state)">
     <div *ngFor="let monster of state.monsterArray">
       <fieldset>

@@ -6,4 +6,9 @@ export class IMEncounter {
         public monsterArray: Array<IMMonster>,
         public turn: Turn
     ) { }
+
+    addMonster(monster: IMMonster) {
+        this.monsterArray.push(monster);
+    }
+    
 }

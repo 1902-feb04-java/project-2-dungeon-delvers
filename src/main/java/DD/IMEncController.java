@@ -25,6 +25,8 @@ public class IMEncController {
         	System.out.println("Failure Incorrect Turn");
         }
         System.out.println("enc object: " + newEncounter.toString());
+        newEncounter.getTurn().setPos(3);
+        chatMessage.setContent(newEncounter.toJSON());
 		return chatMessage;
 	}
 	
