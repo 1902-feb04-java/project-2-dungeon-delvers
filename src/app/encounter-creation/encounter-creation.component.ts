@@ -13,7 +13,7 @@ export class EncounterCreationComponent implements OnInit {
   submitted = false;
   post_result: any;
 
-  constructor( private character: EncounterCreationService) { }
+  constructor( private ecs: EncounterCreationService) { }
   
 
   ngOnInit() {
