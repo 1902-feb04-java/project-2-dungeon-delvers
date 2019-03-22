@@ -1,1 +1,15 @@
-you must construct additional pylons
+<html class="paper-background">
+ 
+  <body>
+    <div *ngFor = "let player of players">
+        <br>
+        <h2>{{player.characterName}}</h2>
+  
+       <h5>HP: {{player.healthPoints}} </h5>
+       <h5>AC: {{player.armorClass}}   </h5>
+       <h5>DD: {{player.damageDie}}    </h5>
+    </div>
+  </body>
+</html>
+
+
