@@ -20,8 +20,10 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     // this.myProfile = this.loginService.myProfile;
     // this.myCampaigns = this.campaignService.getCampaigns(); 
-    console.log(this.loginService.myProfile);
+    //console.log(this.loginService.myProfile);
     this.loginService.login(this.loginService.myAccount.username, this.loginService.myAccount.password);
+    //console.log(this.loginService.myProfile.campaigns);
+    console.log('init' + JSON.stringify(this.loginService.myProfile));
   }
  public toCampaignCreation()
  {
