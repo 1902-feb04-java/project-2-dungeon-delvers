@@ -21,7 +21,7 @@ export class EncounterCreationComponent implements OnInit {
 
   onSubmit() {
     this.submitted=true;
-    this.character.sendEncounter(this.model).subscribe(x => this.post_result = x.toString());
+    //this.character.sendEncounter(this.model).subscribe(x => this.post_result = x.toString());
   }
 
 

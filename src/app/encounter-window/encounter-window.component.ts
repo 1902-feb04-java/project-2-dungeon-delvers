@@ -19,7 +19,7 @@ export class EncounterWindowComponent implements OnInit {
   public messages: Array<Message> = [new Message("CHAT", "woot2", "hardcodetest")];
   public monsters: Array<IMMonster> = [new IMMonster("Goblin_1", "Goblin", 6, 14, 10),
       new IMMonster("Goblin_2", "Goblin", 6, 14, 10)];
-  public turn: Turn = new Turn([1,3,3,2,3,4,5],6,1);
+  public turn: Turn = new Turn([1,3,3,2,3,4,5],6,0);
   public state: IMEncounter = new IMEncounter(this.monsters, this.turn);
 
   constructor(public ls: LoginService) {
@@ -41,7 +41,7 @@ export class EncounterWindowComponent implements OnInit {
     });
   }
 
-  sendState(state, typenum=0, user='DefaultUser') {
+  sendState(state, typenum=0, user='1') {
     let obj = {type: typenum, content: JSON.stringify(state), sender: user};
     this.stompClient.send("/app/enc.sendMessage", null, JSON.stringify(obj) );
     console.log('sending message to' + this.stompClient.serverUrl);
@@ -58,4 +58,4 @@ export class EncounterWindowComponent implements OnInit {
 
   get diagnostic() { return JSON.stringify(this.state); }
 
-
+}
