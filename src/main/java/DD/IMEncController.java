@@ -18,6 +18,12 @@ public class IMEncController {
 	public ChatMessage sendMessage(@Payload ChatMessage chatMessage) {
 		System.out.println(chatMessage.toString());
         IMEncounter newEncounter = IMEncounter.fromJSON(chatMessage.getContent());
+        int sender = Integer.parseInt(chatMessage.getSender());
+        if(newEncounter.getTurn().isNext(sender)) {
+        	System.out.println("Success Correct Turn");
+        }else {
+        	System.out.println("Failure Incorrect Turn");
+        }
         System.out.println("enc object: " + newEncounter.toString());
 		return chatMessage;
 	}
