@@ -1,6 +1,7 @@
 package DD;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +23,15 @@ public class CampaignController {
 	CampaignService cs;
 	@Autowired
 	CampaignsToAccountsService ctas;
+	
+	@GetMapping(path="/get")
+	public Campaign[] getCampaign()
+	{
+		
+		Campaign[] arr = new Campaign[1];
+		arr = cs.getCampaigns().toArray(arr);
+		return arr;
+	}
 	
 	@PostMapping(path="/post", consumes="application/json")
     public void addCampaign(@RequestBody String c) {
