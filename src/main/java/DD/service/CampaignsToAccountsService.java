@@ -56,4 +56,8 @@ public class CampaignsToAccountsService {
 		}
 		return ca;
 	}
+	public int[] getAccountIdsForCampaign(int id)
+	{
+		return rep.getByCampaignId(id);
+	}
 }

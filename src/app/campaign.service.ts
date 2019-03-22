@@ -4,18 +4,38 @@ import { Profile } from './profile';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { LoginService } from './login.service';
+import { forEach } from '@angular/router/src/utils/collection';
+import { CampaignComponent } from './campaign/campaign.component';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class CampaignService {
-
+  public campaigns:Campaign[] =  [new Campaign(null,null,null,null)];
   constructor(private http: HttpClient, private loginService: LoginService) { }
-  public getCampaigns(): Campaign[]
+  public getCampaigns()
   {
-    return this.campaigns; //dont use this, use httpclient
+   this.http.get<string>("/campaigns/get").subscribe(x=>{
+    console.log(x);
+     if (x)
+     {
+       let obj = JSON.parse(JSON.stringify(x));
+       this.campaigns = [];
+       for(let c of obj)
+       {
+         let camp:Campaign = new Campaign(null,null,null,null);
+          camp.id = c.id;
+          camp.name = c.campaignName;
+
+         this.campaigns.push(camp);
+       }
+
+     }
+   });
   }
+      // console.log(JSON.stringify(x) + "in here");
+       
   public getCampaignsfromOwner(playerId:number): Campaign[]
   {
     return null;
@@ -46,11 +66,6 @@ export class CampaignService {
     });
     
   }
-  campaigns:Campaign[] = [
-    new Campaign( 1, ["Adam", "Fredrick", "Spencer"], "John's Campaign", 1),
-    new Campaign( 2, ["Fredrick", "Spencer", "John"], "Adam's Campaign", 2),
-    new Campaign( 3, ["Spencer", "John", "Adam"], "Fredrick's Campaign", 3),
-    new Campaign( 4, ["John", "Adam", "Fredrick"], "Spencer's Campaign", 4)
-  ];
+  
   selectedCampaign:Campaign;
 }
