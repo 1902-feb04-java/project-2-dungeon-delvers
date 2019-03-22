@@ -19,8 +19,9 @@ import org.jboss.logging.Property;
 public class Campaign {
 	
 	@Id
+	@Column(name="id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int camId;
+	private int id;
 	
 	@Column(name="name")
 	private String campaignName;
@@ -32,7 +33,7 @@ public class Campaign {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + camId;
+		result = prime * result + id;
 		result = prime * result + ((campaignName == null) ? 0 : campaignName.hashCode());
 		result = prime * result + ((saveState == null) ? 0 : saveState.hashCode());
 		return result;
@@ -47,7 +48,7 @@ public class Campaign {
 		if (getClass() != obj.getClass())
 			return false;
 		Campaign other = (Campaign) obj;
-		if (camId != other.camId)
+		if (id != other.id)
 			return false;
 		if (campaignName == null) {
 			if (other.campaignName != null)
@@ -62,17 +63,25 @@ public class Campaign {
 		return true;
 	}
 
+	public Campaign() {
+		super();
+		// TODO Auto-generated constructor stub
+		this.id = 0;
+		this.saveState = "";
+		this.campaignName = "";
+	}
+
 	@Override
 	public String toString() {
-		return "Campaign [camId=" + camId + ", campaignName=" + campaignName + ", saveState=" + saveState + "]";
+		return "Campaign [id=" + id + ", campaignName=" + campaignName + ", saveState=" + saveState + "]";
 	}
 
-	public int getCamId() {
-		return camId;
+	public int getid() {
+		return id;
 	}
 
-	public void setCamId(int camId) {
-		this.camId = camId;
+	public void setid(int id) {
+		this.id = id;
 	}
 
 	public String getCampaignName() {

@@ -1,48 +1,74 @@
 package DD;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import DD.entity.Campaign;
+import DD.entity.CampaignsToAccounts;
+import DD.service.CampaignService;
+import DD.service.CampaignsToAccountsService;
 
 
 @RestController
 @RequestMapping("/campaigns")
 public class CampaignController {
-
+	@Autowired
+	CampaignService cs;
+	@Autowired
+	CampaignsToAccountsService ctas;
 	
 	@PostMapping(path="/post", consumes="application/json")
-    public void addCharacter(@RequestBody String c) {
-    	System.out.println(c);
-    	
+    public void addCampaign(@RequestBody String c) {
+		ObjectMapper mapper = new ObjectMapper();
+		JsonNode jn;
+		CampaignWithOwner cwo = new CampaignWithOwner();
+		//IMEncounter jsonEncounter = null;
+		try {
+			jn = mapper.readTree(c);
+			cwo.owner = jn.get("owner").asInt();
+			cwo.name = jn.get("name").asText();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		Campaign camp = new Campaign();
+		camp.setCampaignName(cwo.name);
+		
+		cs.addCampaign(camp);
+		System.out.println(camp.toString());
+    	CampaignsToAccounts cta = new CampaignsToAccounts(0,cwo.owner,camp.getid(),true);
+    	ctas.addCampaignsToAccounts(cta);
     	
 	}
 	public class CampaignWithOwner {
-		private Campaign c;
-		private int owner;
-		public CampaignWithOwner(Campaign c, int owner) {
+		public String name;
+		public int id=0;
+		public int owner;
+		
+		public CampaignWithOwner(String name, int id, int owner) {
 			super();
-			this.c = c;
+			this.name = name;
+			this.id = id;
 			this.owner = owner;
 		}
-		public Campaign getC() {
-			return c;
+
+		public CampaignWithOwner() {
+			super();
+			// TODO Auto-generated constructor stub
 		}
-		public void setC(Campaign c) {
-			this.c = c;
-		}
-		public int getOwner() {
-			return owner;
-		}
-		public void setOwner(int owner) {
-			this.owner = owner;
-		}
+
 		@Override
 		public String toString() {
-			return "CampaignWithOwner [c=" + c + ", owner=" + owner + "]";
+			return "CampaignWithOwner [name=" + name + ", id=" + id + ", owner=" + owner + "]";
 		}
+		
+		
 		
 	}
 }

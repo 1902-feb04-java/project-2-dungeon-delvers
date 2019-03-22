@@ -27,7 +27,7 @@ public class CharacterController {
 	@PostMapping(path="/post", consumes="application/json")
     public String addCharacter(@RequestBody Character c) {
     	System.out.println(c.toString());
-    	return cs.addCharacter(c);
+    	return c.toString();
     	
 	}
 }

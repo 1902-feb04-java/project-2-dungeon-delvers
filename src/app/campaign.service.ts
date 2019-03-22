@@ -3,6 +3,7 @@ import {Campaign} from '../app/campaign';
 import { Profile } from './profile';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { LoginService } from './login.service';
 
 
 @Injectable({
@@ -10,7 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class CampaignService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private loginService: LoginService) { }
   public getCampaigns(): Campaign[]
   {
     return this.campaigns; //dont use this, use httpclient
@@ -41,7 +42,7 @@ export class CampaignService {
     headers.append('Content-Type', 'application/json');
     console.log(a.toString());
     this.http.post("/campaigns/post", a, { responseType: "text", headers: headers }).source.subscribe(x=>{
-      console.log('wtf man');
+      console.log("campaign sent");
     });
     
   }

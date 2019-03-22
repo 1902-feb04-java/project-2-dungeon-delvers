@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit {
     // this.myProfile = this.loginService.myProfile;
     // this.myCampaigns = this.campaignService.getCampaigns(); 
     console.log(this.loginService.myProfile);
+    this.loginService.login(this.loginService.myAccount.username, this.loginService.myAccount.password);
   }
  public toCampaignCreation()
  {
