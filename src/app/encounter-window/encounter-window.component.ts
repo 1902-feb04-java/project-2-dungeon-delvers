@@ -6,6 +6,7 @@ import { Message } from '../message';
 import { IMMonster } from '../immonster';
 import { IMEncounter } from '../imencounter';
 import { Turn } from '../turn';
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-encounter-window',
@@ -22,7 +23,7 @@ export class EncounterWindowComponent implements OnInit {
   public turn: Turn = new Turn([1,3,3,2,3,4,5],6,1);
   public state: IMEncounter = new IMEncounter(this.monsters, this.turn);
 
-  constructor() {
+  constructor(public ls: LoginService) {
     this.initializeWebSocketConnection();
   }
 
@@ -35,7 +36,7 @@ export class EncounterWindowComponent implements OnInit {
     this.stompClient.connect({}, function(frame) {
       that.stompClient.subscribe("/topic/encounter", (message) => {
         if (message.body) {
-          that.messages.push(JSON.parse(message.body));
+          Object.assign(that.state, JSON.parse(JSON.parse(message.body).content));
         }
       });
     });
@@ -56,6 +57,6 @@ export class EncounterWindowComponent implements OnInit {
     console.log(JSON.stringify(obj));
   }
 
-  get diagnostic() { return JSON.stringify(this.monsters); }
+  get diagnostic() { return JSON.stringify(this.state); }
 
 }

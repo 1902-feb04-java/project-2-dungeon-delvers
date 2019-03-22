@@ -19,6 +19,8 @@ public class IMEncController {
 		System.out.println(chatMessage.toString());
         IMEncounter newEncounter = IMEncounter.fromJSON(chatMessage.getContent());
         System.out.println("enc object: " + newEncounter.toString());
+        newEncounter.getTurn().setPos(3);
+        chatMessage.setContent(newEncounter.toJSON());
 		return chatMessage;
 	}
 	
