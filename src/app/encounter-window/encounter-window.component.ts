@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as Stomp from '@stomp/stompjs';
 import * as SockJS from 'sockjs-client';
-
 import { Message } from '../message';
 import { IMMonster } from '../immonster';
 import { IMEncounter } from '../imencounter';
@@ -12,10 +11,10 @@ import { Turn } from '../turn';
   templateUrl: './encounter-window.component.html',
   styleUrls: ['./encounter-window.component.css']
 })
+
 export class EncounterWindowComponent implements OnInit {
   private serverUrl = '/ws';
   private stompClient;
-
   public messages: Array<Message> = [new Message("CHAT", "woot2", "hardcodetest")];
   public monsters: Array<IMMonster> = [new IMMonster("Goblin_1", "Goblin", 6, 14, 10),
       new IMMonster("Goblin_2", "Goblin", 6, 14, 10)];
@@ -57,5 +56,4 @@ export class EncounterWindowComponent implements OnInit {
   }
 
   get diagnostic() { return JSON.stringify(this.monsters); }
-
 }
