@@ -38,9 +38,9 @@ public class Application {
             for (String beanName : beanNames) {
                 System.out.println(beanName);
             }
-            String json = "{\"monsterArray\":[{\"id\":-1,\"name\":\"Goblin1\",\"damageDie\":-1,\"ac\":14,\"hp\":10},{\"id\":-1,\"name\":\"Goblin2\",\"damageDie\":-1,\"ac\":14,\"hp\":10}]}";
-            IMEncounter newEncounter = IMEncounter.fromJSON(json);
-            System.out.println(newEncounter.toString());
+//            String json = "{\"monsterArray\":[{\"id\":-1,\"name\":\"Goblin1\",\"damageDie\":-1,\"ac\":14,\"hp\":10},{\"id\":-1,\"name\":\"Goblin2\",\"damageDie\":-1,\"ac\":14,\"hp\":10}]}";
+//            IMEncounter newEncounter = IMEncounter.fromJSON(json);
+//            System.out.println(newEncounter.toString());
         };
     }
 }

@@ -3,7 +3,8 @@ import * as Stomp from '@stomp/stompjs';
 import * as SockJS from 'sockjs-client';
 
 import { Message } from '../message';
-import { Monster } from '../monster';
+import { IMMonster } from '../immonster';
+import { IMEncounter } from '../imencounter';
 
 @Component({
   selector: 'app-encounter-window',
@@ -15,8 +16,9 @@ export class EncounterWindowComponent implements OnInit {
   private stompClient;
 
   public messages: Array<Message> = [new Message("CHAT", "woot2", "hardcodetest")];
-  public monsters: Array<Monster> = [new Monster(-1, "Goblin1", -1, 14, 10),
-      new Monster(-1, "Goblin2", -1, 14, 10)]; 
+  public monsters: Array<IMMonster> = [new IMMonster("Goblin_1", "Goblin", 6, 14, 10),
+      new IMMonster("Goblin_2", "Goblin", 6, 14, 10)];
+  public state: IMEncounter = new IMEncounter(this.monsters);
 
   constructor() {
     this.initializeWebSocketConnection();

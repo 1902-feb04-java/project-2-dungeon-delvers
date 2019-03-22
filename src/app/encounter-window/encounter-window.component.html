@@ -1,14 +1,17 @@
 <fieldset>
   <legend>Encounter Window</legend>
 
-  <form #monsterList="ngForm" (ngSubmit)="sendState(monsters)">
-    <div *ngFor="let monster of monsters">
+  <form #monsterList="ngForm" (ngSubmit)="sendState(state)">
+    <div *ngFor="let monster of state.monsterArray">
       <fieldset>
         <legend>{{monster.name}}</legend>
+      <b>Type: {{monster.type}}</b><br>
       <b>HP</b>
       <input type="number" name={{monster.name}}_hp [(ngModel)]="monster.hp">
       <b>AC</b>
       <input type="number" name={{monster.name}}_ac [(ngModel)]="monster.ac">
+      <b>Damage Die</b>
+      <input type="number" name={{monster.name}}_dd [(ngModel)]="monster.damageDie">
     </fieldset>
     </div>
     <button type="submit">Send State</button>

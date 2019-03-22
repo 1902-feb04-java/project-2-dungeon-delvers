@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MonsterCreationService } from '../monster-creation.service';
 
 import { Monster } from '../monster';
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-monster-creation',
@@ -10,11 +11,11 @@ import { Monster } from '../monster';
 })
 export class MonsterCreationComponent implements OnInit {
 
-  model = new Monster(0, "gablin", 4, 14, 7);
+  model = new Monster(0, "gablin", 4, 14, 7, this.ls.myProfile.id);
   submitted = false;
   post_result: Monster;
 
-  constructor(private mcs:MonsterCreationService) { }
+  constructor(private mcs:MonsterCreationService, private ls:LoginService) { }
 
   ngOnInit() {
   }

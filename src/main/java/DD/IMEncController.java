@@ -2,6 +2,7 @@ package DD;
 
 import DD.model.ChatMessage;
 import DD.Die;
+import DD.im.IMEncounter;
 
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
@@ -16,6 +17,8 @@ public class IMEncController {
 	@SendTo("/topic/encounter")
 	public ChatMessage sendMessage(@Payload ChatMessage chatMessage) {
 		System.out.println(chatMessage.toString());
+        IMEncounter newEncounter = IMEncounter.fromJSON(chatMessage.getContent());
+        System.out.println("enc object: " + newEncounter.toString());
 		return chatMessage;
 	}
 	

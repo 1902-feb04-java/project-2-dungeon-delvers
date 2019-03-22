@@ -8,9 +8,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class IMEncounter {
 	private List<IMMonster> monsterArray;
+	
 	public IMEncounter() {
 		super();
 	}
+	
 	public static IMEncounter fromJSON(String json) {
 		ObjectMapper mapper = new ObjectMapper();
 		JsonNode jn;
