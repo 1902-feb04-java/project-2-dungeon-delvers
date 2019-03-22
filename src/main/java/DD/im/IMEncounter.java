@@ -6,8 +6,11 @@ import java.util.List;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import DD.Turn;
+
 public class IMEncounter {
 	private List<IMMonster> monsterArray;
+	private Turn turn;
 	
 	public IMEncounter() {
 		super();
@@ -33,9 +36,22 @@ public class IMEncounter {
 	public void setMonsterArray(List<IMMonster> monsterArray) {
 		this.monsterArray = monsterArray;
 	}
-	
+
+	public Turn getTurn() {
+		return turn;
+	}
+
+	public void setTurn(Turn turn) {
+		this.turn = turn;
+	}
+
 	@Override
 	public String toString() {
-		return "IMEncounter [monsterArray=" + monsterArray + "]";
+		final int maxLen = 10;
+		return "IMEncounter [monsterArray="
+				+ (monsterArray != null ? monsterArray.subList(0, Math.min(monsterArray.size(), maxLen)) : null)
+				+ ", turn=" + turn + "]";
 	}
+	
+	
 }

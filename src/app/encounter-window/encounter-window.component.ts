@@ -5,6 +5,7 @@ import * as SockJS from 'sockjs-client';
 import { Message } from '../message';
 import { IMMonster } from '../immonster';
 import { IMEncounter } from '../imencounter';
+import { Turn } from '../turn';
 
 @Component({
   selector: 'app-encounter-window',
@@ -18,7 +19,8 @@ export class EncounterWindowComponent implements OnInit {
   public messages: Array<Message> = [new Message("CHAT", "woot2", "hardcodetest")];
   public monsters: Array<IMMonster> = [new IMMonster("Goblin_1", "Goblin", 6, 14, 10),
       new IMMonster("Goblin_2", "Goblin", 6, 14, 10)];
-  public state: IMEncounter = new IMEncounter(this.monsters);
+  public turn: Turn = new Turn([1,3,3,2,3,4,5],6,1);
+  public state: IMEncounter = new IMEncounter(this.monsters, this.turn);
 
   constructor() {
     this.initializeWebSocketConnection();
