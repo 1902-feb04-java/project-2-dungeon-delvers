@@ -51,6 +51,15 @@ export class CampaignService {
     }
     return null;
   }
+  public joinCampaign( campaign_to_join: number)
+  {
+    this.http.post("campaigns/join", {campaign_id:campaign_to_join, account_id:this.loginService.myAccount.id}).subscribe(x=>
+      {
+        console.log("Trying to join campaign");
+        this.loginService.login(this.loginService.myAccount.username, this.loginService.myAccount.password);
+      });
+    
+  }
   public setSelectedCampaign(campaign: Campaign)
   {
     this.selectedCampaign = campaign;

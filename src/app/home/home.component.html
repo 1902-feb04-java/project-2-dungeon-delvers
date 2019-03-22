@@ -24,7 +24,7 @@
     <div class="container search">
         <div *ngIf="campaignService.campaigns != null">
             <div *ngFor="let z of campaignService.campaigns">
-                <button>{{z.name}}</button>
+                <button (click)="campaignService.joinCampaign(z.id)">{{z.name}}</button>
             </div>
         </div>
     </div>

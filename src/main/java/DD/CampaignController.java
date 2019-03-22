@@ -32,6 +32,27 @@ public class CampaignController {
 		arr = cs.getCampaigns().toArray(arr);
 		return arr;
 	}
+	@PostMapping(path="/join", consumes="application/json")
+	public void joinCampaign(@RequestBody String c)
+	{
+		ObjectMapper mapper = new ObjectMapper();
+		JsonNode jn;
+		int acc_id;
+		int camp_id;
+		try {
+			jn = mapper.readTree(c);
+			acc_id = jn.get("account_id").asInt();
+			camp_id = jn.get("campaign_id").asInt();
+			System.out.println(acc_id + " " + camp_id);
+			if (ctas.contains(acc_id, camp_id)) {
+			ctas.addAccountToCampaign(acc_id, camp_id);
+			}
+		} catch(Exception e)
+		{
+			e.printStackTrace(System.out);
+		}
+		
+	}
 	
 	@PostMapping(path="/post", consumes="application/json")
     public void addCampaign(@RequestBody String c) {
