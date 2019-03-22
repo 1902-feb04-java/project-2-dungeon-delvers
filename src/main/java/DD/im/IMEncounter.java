@@ -11,6 +11,7 @@ import DD.Turn;
 
 public class IMEncounter {
 	private List<IMMonster> monsterArray;
+	private List<IMMonster> tempArray;
 	private Turn turn;
 	
 	public IMEncounter() {
@@ -29,7 +30,7 @@ public class IMEncounter {
 		}
 		return jsonEncounter;
 	}
-	
+
 	public String toJSON() {
 		ObjectMapper mapper = new ObjectMapper();
 		try {
@@ -38,6 +39,20 @@ public class IMEncounter {
 			e.printStackTrace();
 			return null;
 		}
+	}
+
+	public void AddMonster(IMMonster newMonster) {
+		monsterArray.add(newMonster);
+	}
+	
+	public void RemoveDeadMonsters() {
+		for(IMMonster mon : monsterArray) {
+			if(mon.getHp()>0) {
+				tempArray.add(mon);
+			}
+		}
+		monsterArray = tempArray;
+		tempArray.clear();
 	}
 	
 	public List<IMMonster> getMonsterArray() {
@@ -63,6 +78,4 @@ public class IMEncounter {
 				+ (monsterArray != null ? monsterArray.subList(0, Math.min(monsterArray.size(), maxLen)) : null)
 				+ ", turn=" + turn + "]";
 	}
-	
-	
 }

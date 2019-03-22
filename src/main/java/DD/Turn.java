@@ -21,7 +21,7 @@ public class Turn {
 			i.add(pi);
 		}
 		
-		for (int x = 0; x < monsterCount; x++)
+		 for (int x = 0; x < monsterCount; x++)
 		{
 			i.add(dungeonMasterId);
 		}
