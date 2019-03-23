@@ -6,13 +6,11 @@ import { HomeComponent } from './home/home.component';
 import { CampaignComponent } from './campaign/campaign.component';
 import { CharacterComponent } from './character/character.component';
 import { CharacterCreationComponent } from './character-creation/character-creation.component';
-
-import { EncounterCreationComponent } from './encounter-creation/encounter-creation.component';
-
 import { MonsterCreationComponent } from './monster-creation/monster-creation.component';
 import { CampaignCreationComponent } from './campaign-creation/campaign-creation.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { ChatWindowComponent } from './chat-window/chat-window.component';
+import { EncounterCreationComponent } from './encounter-creation/encounter-creation.component';
 
 
 
@@ -28,7 +26,8 @@ const routes: Routes = [
 
   {path: 'monstercreation', component: MonsterCreationComponent},
   {path: 'campaign/create', component: CampaignCreationComponent},
-  {path: 'chat-window', component: ChatWindowComponent}
+  {path: 'chat-window', component: ChatWindowComponent},
+  {path: 'encountercreation', component: EncounterCreationComponent}
 ];
 
 
