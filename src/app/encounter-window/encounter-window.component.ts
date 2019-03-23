@@ -15,8 +15,8 @@ export class EncounterWindowComponent implements OnInit {
   private stompClient;
 
   public messages: Array<Message> = [new Message("CHAT", "woot2", "hardcodetest")];
-  public monsters: Array<Monster> = [new Monster(-1, "Goblin1", -1, 14, 10),
-      new Monster(-1, "Goblin2", -1, 14, 10)]; 
+  public monsters: Array<Monster> = [new Monster(-1,0, "Goblin1", -1, 14, 10),
+      new Monster(-1,0, "Goblin2", -1, 14, 10)]; 
 
   constructor() {
     this.initializeWebSocketConnection();
