@@ -15,11 +15,4 @@ export class EncounterCreationService {
     headers.append('Content-Type', 'application/json');
     return this.http.get("/monsters", { responseType: "text", headers: headers });
   }
-
-  sendEncounter(e:IMEncounter): Observable<any> {
-    let headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/json');
-    console.log(e.toString());
-    return this.http.post("/characters/post", e, { responseType: "text", headers: headers });
-  }
 }
