@@ -12,22 +12,25 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 public class IMEncController {
-	
+	ChatMessage oldState;
 	@MessageMapping("/enc.sendMessage")
 	@SendTo("/topic/encounter")
 	public ChatMessage sendMessage(@Payload ChatMessage chatMessage) {
+		if(oldState==null) {
+			oldState = chatMessage;
+		}
 		System.out.println(chatMessage.toString());
         IMEncounter newEncounter = IMEncounter.fromJSON(chatMessage.getContent());
         int sender = Integer.parseInt(chatMessage.getSender());
         if(newEncounter.getTurn().isNext(sender)) {
         	System.out.println("Success Correct Turn");
-        }else {
-        	System.out.println("Failure Incorrect Turn");
+        	System.out.println("enc object: " + newEncounter.toString());
+        	oldState = chatMessage;
+        	return chatMessage;
         }
+        System.out.println("Failure Incorrect Turn");
         System.out.println("enc object: " + newEncounter.toString());
-        newEncounter.getTurn().setPos(3);
-        chatMessage.setContent(newEncounter.toJSON());
-		return chatMessage;
+        return oldState;
 	}
 	
 //	@MessageMapping("/chat.addUser")

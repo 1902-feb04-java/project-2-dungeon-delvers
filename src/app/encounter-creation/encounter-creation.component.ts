@@ -50,6 +50,7 @@ export class EncounterCreationComponent implements OnInit {
     this.model_monster.ac = monster.ac;
     this.model_monster.hp = monster.hp;
     this.model_monster.damageDie = monster.damageDie;
+
   }
 
   get diagnostic() { return JSON.stringify(this.model); }
