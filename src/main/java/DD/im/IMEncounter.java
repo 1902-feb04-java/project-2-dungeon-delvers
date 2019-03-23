@@ -11,7 +11,6 @@ import DD.Turn;
 
 public class IMEncounter {
 	private List<IMMonster> monsterArray;
-	private List<IMMonster> tempArray;
 	private Turn turn;
 	
 	public IMEncounter() {
@@ -46,13 +45,11 @@ public class IMEncounter {
 	}
 	
 	public void RemoveDeadMonsters() {
-		for(IMMonster mon : monsterArray) {
-			if(mon.getHp()>0) {
-				tempArray.add(mon);
+		for(int i = 0; i<monsterArray.size();i++) {
+			if(monsterArray.get(i).getHp()<=0) {
+				monsterArray.remove(i);
 			}
 		}
-		monsterArray = tempArray;
-		tempArray.clear();
 	}
 	
 	public List<IMMonster> getMonsterArray() {

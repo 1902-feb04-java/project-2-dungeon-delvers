@@ -89,6 +89,4 @@ public class Turn {
 				+ (turns != null ? Arrays.toString(Arrays.copyOf(turns, Math.min(turns.length, maxLen))) : null)
 				+ ", max=" + max + ", pos=" + pos + "]";
 	}
-	
-	
 }

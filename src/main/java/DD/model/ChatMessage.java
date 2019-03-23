@@ -40,7 +40,4 @@ public class ChatMessage {
 	public void setSender(String sender) {
 		this.sender = sender;
 	}
-	
-	
-
 }
