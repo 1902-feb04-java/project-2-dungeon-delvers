@@ -35,7 +35,8 @@ export class EncounterWindowComponent implements OnInit {
     this.stompClient.connect({}, function(frame) {
       that.stompClient.subscribe("/topic/encounter", (message) => {
         if (message.body) {
-          Object.assign(that.state, JSON.parse(JSON.parse(message.body).content));
+          console.log(JSON.parse(JSON.parse(message.body).content));
+          that.state = Object.assign(that.state, JSON.parse(JSON.parse(message.body).content));
         }
       });
     });
