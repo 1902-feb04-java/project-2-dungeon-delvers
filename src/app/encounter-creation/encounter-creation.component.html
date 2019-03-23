@@ -6,9 +6,16 @@
   </form>
 </div>
 
+<b>Add Character:</b>
+<div *ngFor="let character of character_list">
+  <form (ngSubmit)="onSubmitCharacter(character)">
+    <button type="submit">{{character.characterName}}</button>
+  </form>
+</div>
+
 <div class="container">
     <h1>Add Monster To Encounter</h1>
-    <form (ngSubmit)="onSubmit()" #monsterCreation="ngForm">
+    <form (ngSubmit)="onSubmitMonster()" #monsterCreation="ngForm">
       <div class="form-group">
         <label for="name">Name</label>
         <input type="text" class="form-control" id="name" required [(ngModel)]="model_monster.name"

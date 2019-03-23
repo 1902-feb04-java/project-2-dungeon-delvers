@@ -25,7 +25,6 @@ public class IMEncController {
         if(newEncounter.getTurn().isNext(sender)) {
         	System.out.println("Success Correct Turn");
         	System.out.println("enc object: " + newEncounter.toString());
-        	newEncounter.RemoveDeadMonsters();
         	encMessage.setContent(newEncounter.toJSON());
         	oldState = encMessage;
         	return encMessage;

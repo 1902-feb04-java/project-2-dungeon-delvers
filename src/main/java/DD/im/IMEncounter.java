@@ -11,6 +11,7 @@ import DD.Turn;
 
 public class IMEncounter {
 	private List<IMMonster> monsterArray;
+	private List<IMCharacter> characterArray;
 	private List<IMMonster> tempArray;
 	private Turn turn;
 	
@@ -71,11 +72,21 @@ public class IMEncounter {
 		this.turn = turn;
 	}
 
+	public List<IMCharacter> getCharacterArray() {
+		return characterArray;
+	}
+
+	public void setCharacterArray(List<IMCharacter> characterArray) {
+		this.characterArray = characterArray;
+	}
+
 	@Override
 	public String toString() {
 		final int maxLen = 10;
 		return "IMEncounter [monsterArray="
 				+ (monsterArray != null ? monsterArray.subList(0, Math.min(monsterArray.size(), maxLen)) : null)
+				+ ", characterArray="
+				+ (characterArray != null ? characterArray.subList(0, Math.min(characterArray.size(), maxLen)) : null)
 				+ ", turn=" + turn + "]";
 	}
 }
