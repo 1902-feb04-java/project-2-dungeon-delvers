@@ -58,4 +58,4 @@ export class EncounterWindowComponent implements OnInit {
 
   get diagnostic() { return JSON.stringify(this.state); }
 
-
+}
