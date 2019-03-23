@@ -80,7 +80,7 @@ public class AccountController {
 		{
 			nullMonsters = true;
 		}
-		System.out.println(userCampaigns[0].toString());
+		//System.out.println(userCampaigns[0].toString());
 		Profile p = new Profile(a, userCampaigns, characters, m);
 		
 		

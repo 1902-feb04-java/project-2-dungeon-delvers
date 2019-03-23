@@ -18,11 +18,13 @@ export class EncounterWindowComponent implements OnInit {
   private serverUrl = '/ws';
   private stompClient;
   public messages: Array<Message> = [new Message("CHAT", "woot2", "hardcodetest")];
+
   public monsters: Array<IMMonster> = [new IMMonster("Goblin_1", "Goblin", 6, 14, 10),
       new IMMonster("Goblin_2", "Goblin", 6, 14, 10)];
   public characters: Array<IMCharacter> = [new IMCharacter(0, 0, 0, "blehrg", 10, 10, 10)];
   public turn: Turn = new Turn([1,3,3,2,3,4,5],6,0);
   public state: IMEncounter = new IMEncounter(this.monsters, this.characters, this.turn);
+
 
   constructor(public ls: LoginService) {
     this.initializeWebSocketConnection();
