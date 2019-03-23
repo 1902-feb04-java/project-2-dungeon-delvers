@@ -8,7 +8,7 @@ import { Character } from '../character';
   styleUrls: ['./character-creation.component.css']
 })
 export class CharacterCreationComponent implements OnInit {
-  model = new Character(0, 24, "Snigley Sputterton", 13, 25, 11, 20);
+  model = new Character(0, 1, "", 0, 0, 0, 0);
   submitted = false;
   post_result: any;
 
