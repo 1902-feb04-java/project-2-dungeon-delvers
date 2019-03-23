@@ -7,6 +7,7 @@ import { IMMonster } from '../immonster';
 import { LoginService } from '../login.service';
 import { CharacterCreationService } from '../character-creation.service';
 import { IMCharacter } from '../imcharacter';
+import { CampaignService } from '../campaign.service';
 
 @Component({
   selector: 'app-encounter-creation',
@@ -15,7 +16,7 @@ import { IMCharacter } from '../imcharacter';
 })
 export class EncounterCreationComponent implements OnInit {
 
-  monster_list = [new Monster(1, "goblin", 4, 10, 10, 1), new Monster(2, "gablin", 14, 110, 110, 1)];
+  monster_list = [new Monster(1, 1, "goblin", 4, 10, 10), new Monster(2, 1,"gablin", 14, 110, 110)];
   character_list = [new Character(0, 0, "Placeholder", 0, 10, 10, 10)];
   model = new IMEncounter([], [], null);
   model_monster = new IMMonster("Monster", "Type", 2, 0, 0);
@@ -26,7 +27,8 @@ export class EncounterCreationComponent implements OnInit {
   constructor(
       private ecs: EncounterCreationService,
       private ls: LoginService,
-      private ccs: CharacterCreationService) { }
+      private ccs: CharacterCreationService,
+      private cs: CampaignService) { }
   
   ngOnInit() {
     this.ecs.getMonsters().subscribe(x => this.monster_list = JSON.parse(x));

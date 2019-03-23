@@ -11,7 +11,7 @@ import { LoginService } from '../login.service';
 })
 export class MonsterCreationComponent implements OnInit {
 
-  model = new Monster(0, "gablin", 4, 14, 7, this.ls.myProfile.id);
+  model = new Monster(0, this.ls.myProfile.id,"gablin", 4, 14, 7);
   submitted = false;
   post_result: Monster;
 
