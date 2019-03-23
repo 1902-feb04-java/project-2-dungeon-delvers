@@ -1,24 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import * as Stomp from '@stomp/stompjs';
 import * as SockJS from 'sockjs-client';
-
 import { Message } from '../message';
-import { Monster } from '../monster';
+import { IMMonster } from '../immonster';
+import { IMEncounter } from '../imencounter';
+import { Turn } from '../turn';
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-encounter-window',
   templateUrl: './encounter-window.component.html',
   styleUrls: ['./encounter-window.component.css']
 })
+
 export class EncounterWindowComponent implements OnInit {
   private serverUrl = '/ws';
   private stompClient;
-
   public messages: Array<Message> = [new Message("CHAT", "woot2", "hardcodetest")];
-  public monsters: Array<Monster> = [new Monster(-1, "Goblin1", -1, 14, 10),
-      new Monster(-1, "Goblin2", -1, 14, 10)]; 
+  public monsters: Array<IMMonster> = [new IMMonster("Goblin_1", "Goblin", 6, 14, 10),
+      new IMMonster("Goblin_2", "Goblin", 6, 14, 10)];
+  public turn: Turn = new Turn([1,3,3,2,3,4,5],6,0);
+  public state: IMEncounter = new IMEncounter(this.monsters, this.turn);
 
-  constructor() {
+  constructor(public ls: LoginService) {
     this.initializeWebSocketConnection();
   }
 
@@ -31,13 +35,13 @@ export class EncounterWindowComponent implements OnInit {
     this.stompClient.connect({}, function(frame) {
       that.stompClient.subscribe("/topic/encounter", (message) => {
         if (message.body) {
-          that.messages.push(JSON.parse(message.body));
+          Object.assign(that.state, JSON.parse(JSON.parse(message.body).content));
         }
       });
     });
   }
 
-  sendState(state, typenum=0, user='DefaultUser') {
+  sendState(state, typenum=0, user='1') {
     let obj = {type: typenum, content: JSON.stringify(state), sender: user};
     this.stompClient.send("/app/enc.sendMessage", null, JSON.stringify(obj) );
     console.log('sending message to' + this.stompClient.serverUrl);
@@ -52,6 +56,6 @@ export class EncounterWindowComponent implements OnInit {
     console.log(JSON.stringify(obj));
   }
 
-  get diagnostic() { return JSON.stringify(this.monsters); }
+  get diagnostic() { return JSON.stringify(this.state); }
 
 }

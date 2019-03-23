@@ -2,6 +2,7 @@ package DD;
 
 import DD.model.ChatMessage;
 import DD.Die;
+import DD.im.IMEncounter;
 
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
@@ -11,12 +12,25 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 public class IMEncController {
-	
+	ChatMessage oldState;
 	@MessageMapping("/enc.sendMessage")
 	@SendTo("/topic/encounter")
 	public ChatMessage sendMessage(@Payload ChatMessage chatMessage) {
+		if(oldState==null) {
+			oldState = chatMessage;
+		}
 		System.out.println(chatMessage.toString());
-		return chatMessage;
+        IMEncounter newEncounter = IMEncounter.fromJSON(chatMessage.getContent());
+        int sender = Integer.parseInt(chatMessage.getSender());
+        if(newEncounter.getTurn().isNext(sender)) {
+        	System.out.println("Success Correct Turn");
+        	System.out.println("enc object: " + newEncounter.toString());
+        	oldState = chatMessage;
+        	return chatMessage;
+        }
+        System.out.println("Failure Incorrect Turn");
+        System.out.println("enc object: " + newEncounter.toString());
+        return oldState;
 	}
 	
 //	@MessageMapping("/chat.addUser")

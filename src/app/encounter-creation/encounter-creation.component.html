@@ -1,3 +1,49 @@
+
+<b>Use Template:</b>
+<div *ngFor="let monster of monster_list">
+  <form (ngSubmit)="onSubmitTemplate(monster)">
+    <button type="submit">{{monster.name}}</button>
+  </form>
+</div>
+
+<div class="container">
+    <h1>Add Monster To Encounter</h1>
+    <form (ngSubmit)="onSubmit()" #monsterCreation="ngForm">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" required [(ngModel)]="model_monster.name"
+           name="name">
+      </div>
+
+      <div class="form-group">
+          <label for="type">Name</label>
+          <input type="text" class="form-control" id="type" required [(ngModel)]="model_monster.type"
+             name="type">
+      </div>
+
+      <div class="form-group">
+        <label for="damageDie">Damage Die</label>
+        <input type="number" class="form-control" id="damageDie" required [(ngModel)]="model_monster.damageDie" name="damageDie">
+      </div>
+  
+      <div class="form-group">
+        <label for="ac">Armor Class (AC)</label>
+        <input type="number" class="form-control" id="ac" required [(ngModel)]="model_monster.ac" name="ac">
+      </div>
+  
+      <div class="form-group">
+        <label for="hp">Hit Points (HP)</label>
+        <input type="number" class="form-control" id="hp" required [(ngModel)]="model_monster.hp" name="hp">
+      </div>
+  
+      <button type="submit" class="btn btn-success">Submit</button>
+  
+    </form>
+  </div>
+
+  <br>current model: {{ diagnostic }}
+
+<!--
 <div>
   <form (ngSubmit)="onSubmit()" #characterCreation="ngForm">
     <fieldset>
@@ -34,3 +80,4 @@
   </form>
   
 </div>
+-->
