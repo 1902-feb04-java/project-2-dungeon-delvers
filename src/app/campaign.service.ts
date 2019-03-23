@@ -71,7 +71,7 @@ export class CampaignService {
     headers.append('Content-Type', 'application/json');
     console.log(a.toString());
     this.http.post("/campaigns/post", a, { responseType: "text", headers: headers }).source.subscribe(x=>{
-      console.log("campaign sent");
+      this.loginService.login(this.loginService.myAccount.username, this.loginService.myAccount.password);
     });
     
   }
