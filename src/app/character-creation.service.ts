@@ -24,5 +24,17 @@ export class CharacterCreationService {
     return this.http.post("/characters/post", c, { responseType: "text", headers: headers });
   }
 
- 
+  getCharacter(id): Observable<any> {
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    console.log(id.toString());
+    return this.http.get("/characters/" + id , { responseType: "text", headers: headers });
+  }
+
+ getCharacterByAccount(id): Observable<any> {
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    console.log(id.toString());
+    return this.http.get("/characters/account/" + id , { responseType: "text", headers: headers });
+ }
 }

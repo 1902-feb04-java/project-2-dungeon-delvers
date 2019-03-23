@@ -11,5 +11,6 @@ import DD.entity.CampaignsToAccounts;
 @Repository
 public interface CampaignsToAccountsRepository extends JpaRepository<CampaignsToAccounts, Long> {
 	CampaignsToAccounts[] findByAccountId(int id);
-	
+	int[] getByCampaignId(int id);
+	CampaignsToAccounts getByAccountIdAndCampaignId(int accountId, int campaignId);
 }

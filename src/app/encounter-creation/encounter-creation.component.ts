@@ -17,6 +17,7 @@ export class EncounterCreationComponent implements OnInit {
   character_list = []
   model = new IMEncounter([], null);
   model_monster = new IMMonster("Monster", "Type", 2, 0, 0);
+
   submitted = false;
   post_result: any;
 

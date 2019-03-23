@@ -1,10 +1,12 @@
 package DD;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.objenesis.instantiator.SerializationInstantiatorHelper;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -78,10 +80,12 @@ public class AccountController {
 		{
 			nullMonsters = true;
 		}
+		System.out.println(userCampaigns[0].toString());
 		Profile p = new Profile(a, userCampaigns, characters, m);
 		
 		
 		System.out.println(p.toString());
+		
 		return p;
 	}
 	

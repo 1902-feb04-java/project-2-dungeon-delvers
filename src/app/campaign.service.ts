@@ -3,18 +3,39 @@ import {Campaign} from '../app/campaign';
 import { Profile } from './profile';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { LoginService } from './login.service';
+import { forEach } from '@angular/router/src/utils/collection';
+import { CampaignComponent } from './campaign/campaign.component';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class CampaignService {
-
-  constructor(private http: HttpClient) { }
-  public getCampaigns(): Campaign[]
+  public campaigns:Campaign[] =  [new Campaign(null,null,null,null)];
+  constructor(private http: HttpClient, private loginService: LoginService) { }
+  public getCampaigns()
   {
-    return this.campaigns; //dont use this, use httpclient
+   this.http.get<string>("/campaigns/get").subscribe(x=>{
+    console.log(x);
+     if (x)
+     {
+       let obj = JSON.parse(JSON.stringify(x));
+       this.campaigns = [];
+       for(let c of obj)
+       {
+         let camp:Campaign = new Campaign(null,null,null,null);
+          camp.id = c.id;
+          camp.name = c.campaignName;
+
+         this.campaigns.push(camp);
+       }
+
+     }
+   });
   }
+      // console.log(JSON.stringify(x) + "in here");
+       
   public getCampaignsfromOwner(playerId:number): Campaign[]
   {
     return null;
@@ -30,6 +51,15 @@ export class CampaignService {
     }
     return null;
   }
+  public joinCampaign( campaign_to_join: number)
+  {
+    this.http.post("campaigns/join", {campaign_id:campaign_to_join, account_id:this.loginService.myAccount.id}).subscribe(x=>
+      {
+        console.log("Trying to join campaign");
+        this.loginService.login(this.loginService.myAccount.username, this.loginService.myAccount.password);
+      });
+    
+  }
   public setSelectedCampaign(campaign: Campaign)
   {
     this.selectedCampaign = campaign;
@@ -41,15 +71,10 @@ export class CampaignService {
     headers.append('Content-Type', 'application/json');
     console.log(a.toString());
     this.http.post("/campaigns/post", a, { responseType: "text", headers: headers }).source.subscribe(x=>{
-      console.log('wtf man');
+      console.log("campaign sent");
     });
     
   }
-  campaigns:Campaign[] = [
-    new Campaign( 1, ["Adam", "Fredrick", "Spencer"], "John's Campaign", 1),
-    new Campaign( 2, ["Fredrick", "Spencer", "John"], "Adam's Campaign", 2),
-    new Campaign( 3, ["Spencer", "John", "Adam"], "Fredrick's Campaign", 3),
-    new Campaign( 4, ["John", "Adam", "Fredrick"], "Spencer's Campaign", 4)
-  ];
+  
   selectedCampaign:Campaign;
 }

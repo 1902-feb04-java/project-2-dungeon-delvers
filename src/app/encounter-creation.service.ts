@@ -14,5 +14,8 @@ export class EncounterCreationService {
     let headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
     return this.http.get("/monsters", { responseType: "text", headers: headers });
+
   }
+
+  
 }

@@ -56,4 +56,26 @@ public class CampaignsToAccountsService {
 		}
 		return ca;
 	}
+	public int[] getAccountIdsForCampaign(int id)
+	{
+		return rep.getByCampaignId(id);
+	}
+	public void addAccountToCampaign(int account_id, int campaign_id)
+	{
+		CampaignsToAccounts s = new CampaignsToAccounts(0, account_id, campaign_id, false);
+		
+		this.addCampaignsToAccounts(s);
+	}
+	public boolean contains(int account_id, int campaign_id)
+	{
+		CampaignsToAccounts s = null;
+		try {
+			s =	rep.getByAccountIdAndCampaignId(account_id, campaign_id);
+		} catch (Exception e)
+		{
+			e.printStackTrace(System.out);
+		}
+		System.out.println(s==null);
+		return (s==null);
+	}
 }

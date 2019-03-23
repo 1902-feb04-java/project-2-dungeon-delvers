@@ -55,6 +55,6 @@ public class CampaignService {
 	}
 	public Campaign getCampaignById(int id)
 	{
-		return cmr.getOne((long) id);
+		return cmr.getOne(id);
 	}
 }

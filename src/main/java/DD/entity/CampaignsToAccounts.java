@@ -16,7 +16,8 @@ public class CampaignsToAccounts {
 	private int id;
 	@Column(name="account_id")
 	private int accountId;
-	private int campaign_id;
+	@Column(name="campaign_id")
+	private int campaignId;
 	private boolean dungeon_master;
 	
 	public CampaignsToAccounts() {
@@ -27,12 +28,12 @@ public class CampaignsToAccounts {
 		super();
 		this.id = id;
 		this.accountId = account_id;
-		this.campaign_id = campaign_id;
+		this.campaignId = campaign_id;
 		this.dungeon_master = dungeon_master;
 	}
 	@Override
 	public String toString() {
-		return "CampaignsToAccounts [id=" + id + ", account_id=" + accountId + ", campaign_id=" + campaign_id
+		return "CampaignsToAccounts [id=" + id + ", account_id=" + accountId + ", campaign_id=" + campaignId
 				+ ", dungeon_master=" + dungeon_master + "]";
 	}
 	public int getId() {
@@ -48,10 +49,10 @@ public class CampaignsToAccounts {
 		this.accountId = account_id;
 	}
 	public int getCampaign_id() {
-		return campaign_id;
+		return campaignId;
 	}
 	public void setCampaign_id(int campaign_id) {
-		this.campaign_id = campaign_id;
+		this.campaignId = campaign_id;
 	}
 	public boolean isDungeon_master() {
 		return dungeon_master;

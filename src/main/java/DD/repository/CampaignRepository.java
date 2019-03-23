@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import DD.entity.Campaign;
 
 @Repository
-public interface CampaignRepository extends JpaRepository<Campaign, Long>{
+public interface CampaignRepository extends JpaRepository<Campaign, Integer>{
 
 }

@@ -3,6 +3,9 @@ import * as Stomp from '@stomp/stompjs';
 import * as SockJS from 'sockjs-client';
 
 import { Message } from '../message';
+import { LoginComponent } from '../login/login.component';
+import { LoginService } from '../login.service';
+import { CharacterCreationService } from '../character-creation.service';
 
 @Component({
   selector: 'app-chat-window',
@@ -15,11 +18,17 @@ export class ChatWindowComponent implements OnInit {
 
   public messages: Array<Message> = [new Message("CHAT", "woot", "hardcodetest")];
 
-  constructor() {
+  public chName;
+  
+
+  constructor(private ls: LoginService, private chServe: CharacterCreationService) {
     this.initializeWebSocketConnection();
   }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    this.chServe.getCharacterByAccount(this.ls.myProfile.id).subscribe(x => this.chName = JSON.parse(x)[0].characterName)
+
+  }
 
   initializeWebSocketConnection() {
     let ws = new SockJS(this.serverUrl);
@@ -34,7 +43,8 @@ export class ChatWindowComponent implements OnInit {
     });
   }
 
-  sendMessage(cont, typenum=0, user='DefaultUser') {
+   
+  sendMessage(cont, typenum=0, user = this.chName) {
     // kept as basic object because of interaction with enum for type
     let obj = {type: typenum, content: cont, sender: user};
     this.stompClient.send("/app/chat.sendMessage", null, JSON.stringify(obj) );
@@ -42,7 +52,7 @@ export class ChatWindowComponent implements OnInit {
     console.log(JSON.stringify(obj));
   }
 
-  rollDie(cont, typenum=3, user='DefaultUser') {
+  rollDie(cont, typenum=3, user= this.chName) {
     this.sendMessage("I'm rolling a d" + cont.toString() + "...")
     let obj = {type: typenum, content: cont.toString(), sender: user};
     this.stompClient.send("/app/chat.rollDie", null, JSON.stringify(obj));
