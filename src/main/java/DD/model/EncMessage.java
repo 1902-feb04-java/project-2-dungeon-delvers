@@ -9,7 +9,8 @@ public class EncMessage {
 	public enum MessageType {
 		TURN,
 		DM,
-		CREATE
+		CREATE,
+		INIT
 	}
 
 	public MessageType getType() {

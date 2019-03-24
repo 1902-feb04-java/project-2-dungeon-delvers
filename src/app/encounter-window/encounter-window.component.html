@@ -35,7 +35,7 @@
    <form (ngSubmit)="sendState(state, 1)">
       <button type= "submit">Send DM</button>
     </form>
-    <form>
+    <form (ngSubmit)="sendState(state, 3)">
       <button type= "submit">New Initiative</button>
     </form>
    <br> Diagnostic: {{ diagnostic }}
