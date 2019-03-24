@@ -32,7 +32,12 @@
     </div>
     <button type="submit">Send State</button>
    </form>
-
+   <form (ngSubmit)="sendState(state, 1)">
+      <button type= "submit">Send DM</button>
+    </form>
+    <form>
+      <button type= "submit">New Initiative</button>
+    </form>
    <br> Diagnostic: {{ diagnostic }}
 
 </fieldset>
