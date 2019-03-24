@@ -22,7 +22,10 @@ public class IMEncController {
 		System.out.println(encMessage.toString());
         IMEncounter newEncounter = IMEncounter.fromJSON(encMessage.getContent());
         int sender = Integer.parseInt(encMessage.getSender());
-        if(newEncounter.getTurn().isNext(sender)) {
+        if(encMessage.getType().equals(EncMessage.MessageType.DM)) {
+        	oldState = encMessage;
+	        return encMessage;
+        }else if(newEncounter.getTurn().isNext(sender)) {
         	System.out.println("Success Correct Turn");
         	System.out.println("enc object: " + newEncounter.toString());
         	encMessage.setContent(newEncounter.toJSON());
