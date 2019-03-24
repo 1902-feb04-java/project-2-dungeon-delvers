@@ -92,6 +92,7 @@ export class EncounterCreationComponent implements OnInit {
     // }
   }
 
-  get diagnostic() { return JSON.stringify(this.model) + "\n\n" + JSON.stringify(this.model_campaign); }
+  get diagnostic() { return JSON.stringify(this.model) + "\n\n" + JSON.stringify(this.model_campaign) +
+      JSON.parse(this.model_campaign.saveState.toString()); }
 
 }

@@ -21,12 +21,13 @@ export class EncounterWindowComponent implements OnInit {
   private stompClient;
   public messages: Array<Message> = [new Message("CHAT", "woot2", "hardcodetest")];
   public model_campaign: Campaign = new Campaign(null, null, null, 0);
-  public monsters: Array<IMMonster> = [new IMMonster("Goblin_1", "Goblin", 6, 14, 10),
-      new IMMonster("Goblin_2", "Goblin", 6, 14, 10)];
-  public characters: Array<IMCharacter> = [new IMCharacter(0, 0, 0, "blehrg", 10, 10, 10)];
+  public monsters: Array<IMMonster> = [new IMMonster("Placeholder_Mon1", "Goblin", 6, 14, 10),
+      new IMMonster("Placeholder_Mon2", "Goblin", 6, 14, 10)];
+  public characters: Array<IMCharacter> = [new IMCharacter(0, 0, 0, "Placeholder_Char", 10, 10, 10)];
   public turn: Turn = new Turn([1,3,3,2,3,4,5],6,0);
   public campaign_list: Array<Campaign>;
   public state: IMEncounter = new IMEncounter(this.monsters, this.characters, this.turn);
+
 
   constructor(public ls: LoginService,
     private cs: CampaignService) {
@@ -59,9 +60,13 @@ export class EncounterWindowComponent implements OnInit {
   }
 
   chooseCampaign(campaign: Campaign) {
-    console.log(JSON.stringify(this.ls.myProfile));
-    console.log(JSON.stringify(campaign));
-    this.model_campaign.id = 3;
+    this.model_campaign.id = campaign.id;
+    this.model_campaign.name = campaign.name;
+    this.model_campaign.owner = null;
+    this.model_campaign.players = null;
+    if (campaign.saveState.length > 0) {
+      this.state = JSON.parse(campaign.saveState.toString());
+    }
   }
 
   get diagnostic() { return JSON.stringify(this.state); }
