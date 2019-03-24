@@ -75,6 +75,12 @@ export class EncounterWindowComponent implements OnInit {
     this.DM = true;
   }
 
+  joinAsPlayer() {
+    this.model_campaign.id=1;
+    //not meant to change anything, just prompts server for state
+    this.sendState(this.state, 0, '99999');
+  }
+
   writeState() {
     this.model_campaign.saveState = JSON.stringify(this.state);
     this.cs.editCampaign(this.model_campaign);
