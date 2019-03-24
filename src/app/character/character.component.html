@@ -1,13 +1,16 @@
 <html class="paper-background">
  
   <body>
+    <h1>My Characters</h1>
+    
     <div *ngFor = "let player of players">
-        <br>
-        <h2>{{player.characterName}}</h2>
+        
+       <h3>{{player.characterName}}</h3>
   
-       <h5>HP: {{player.healthPoints}} </h5>
-       <h5>AC: {{player.armorClass}}   </h5>
-       <h5>DD: {{player.damageDie}}    </h5>
+       <h5>    HP: {{player.healthPoints}} &ensp; 
+               AC: {{player.armorClass}}   &ensp;
+               DD: {{player.damageDie}}    &ensp;
+       </h5>    
     </div>
   </body>
 </html>

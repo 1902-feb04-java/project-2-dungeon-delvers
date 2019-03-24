@@ -39,6 +39,9 @@ export class ChatWindowComponent implements OnInit {
         if (message.body) {
           that.messages.push(JSON.parse(message.body));
         }
+        if (that.messages.length > 10) {
+          that.messages.shift();
+        }
       });
     });
   }
