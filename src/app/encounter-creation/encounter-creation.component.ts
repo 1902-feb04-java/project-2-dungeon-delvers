@@ -21,7 +21,7 @@ export class EncounterCreationComponent implements OnInit {
   monster_list = [new Monster(1, 1, "goblin", 4, 10, 10), new Monster(2, 1,"gablin", 14, 110, 110)];
   character_list = [new Character(0, 0, "Placeholder", 0, 10, 10, 10)];
   campaign_list = [new Campaign(2, ["1","2"], "placeholder_campaign", 2)];
-  model = new IMEncounter([], [], new Turn([1], 1, 0));
+  model = new IMEncounter([], [], new Turn([1, 1], 2, 0));
   model_monster = new IMMonster("Monster", "Type", 2, 0, 0);
   model_campaign: Campaign = new Campaign(0, ["1","2"], "placeholder_campa", 0);
 
@@ -82,8 +82,6 @@ export class EncounterCreationComponent implements OnInit {
   }
 
   saveEncounter() {
-    console.log("TODO: save encounter");
-    console.log(this.ls.myProfile.campaigns);
     this.model_campaign.saveState = JSON.stringify(this.model);
     //if(this.ls.myProfile.id === this.model_campaign.owner) {
       this.cs.editCampaign(this.model_campaign);
@@ -92,7 +90,6 @@ export class EncounterCreationComponent implements OnInit {
     // }
   }
 
-  get diagnostic() { return JSON.stringify(this.model) + "\n\n" + JSON.stringify(this.model_campaign) +
-      JSON.parse(this.model_campaign.saveState.toString()); }
+  get diagnostic() { return JSON.stringify(this.model) + "\n\n" + JSON.stringify(this.model_campaign); }
 
 }

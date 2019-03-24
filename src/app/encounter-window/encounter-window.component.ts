@@ -19,18 +19,21 @@ import { Campaign } from '../campaign';
 export class EncounterWindowComponent implements OnInit {
   private serverUrl = '/ws';
   private stompClient;
-  public messages: Array<Message> = [new Message("CHAT", "woot2", "hardcodetest")];
+
+  public campaign_list: Array<Campaign>;
   public model_campaign: Campaign = new Campaign(null, null, null, 0);
+  public DM: boolean = false;
+
   public monsters: Array<IMMonster> = [new IMMonster("Placeholder_Mon1", "Goblin", 6, 14, 10),
       new IMMonster("Placeholder_Mon2", "Goblin", 6, 14, 10)];
   public characters: Array<IMCharacter> = [new IMCharacter(0, 0, 0, "Placeholder_Char", 10, 10, 10)];
   public turn: Turn = new Turn([1,3,3,2,3,4,5],6,0);
-  public campaign_list: Array<Campaign>;
   public state: IMEncounter = new IMEncounter(this.monsters, this.characters, this.turn);
 
 
-  constructor(public ls: LoginService,
-    private cs: CampaignService) {
+  constructor(
+      public ls: LoginService,
+      private cs: CampaignService) {
     this.initializeWebSocketConnection();
   }
 
@@ -66,7 +69,15 @@ export class EncounterWindowComponent implements OnInit {
     this.model_campaign.players = null;
     if (campaign.saveState.length > 0) {
       this.state = JSON.parse(campaign.saveState.toString());
+    } else {
+      alert("No encounter found for that campaign -- create one!");
     }
+    this.DM = true;
+  }
+
+  writeState() {
+    this.model_campaign.saveState = JSON.stringify(this.state);
+    this.cs.editCampaign(this.model_campaign);
   }
 
   get diagnostic() { return JSON.stringify(this.state); }
