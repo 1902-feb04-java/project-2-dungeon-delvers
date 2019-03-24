@@ -14,6 +14,13 @@ import { CampaignComponent } from './campaign/campaign.component';
 export class CampaignService {
   public campaigns:Campaign[] =  [new Campaign(null,null,null,null)];
   constructor(private http: HttpClient, private loginService: LoginService) { }
+
+  adamGetCampaigns() {
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    return this.http.get("/campaigns/get", { responseType: "text", headers: headers });
+  }
+
   public getCampaigns()
   {
    this.http.get<string>("/campaigns/get").subscribe(x=>{
@@ -26,7 +33,7 @@ export class CampaignService {
        {
          let camp:Campaign = new Campaign(null,null,null,null);
           camp.id = c.id;
-          camp.name = c.campaignName;
+          camp.name = c.name;
 
          this.campaigns.push(camp);
        }
@@ -74,6 +81,13 @@ export class CampaignService {
       this.loginService.login(this.loginService.myAccount.username, this.loginService.myAccount.password);
     });
     
+    
+  }
+  public editCampaign(campaign : Campaign)
+  {
+    this.http.post("/campaigns/edit", campaign).source.subscribe(x=>{
+      this.loginService.login(this.loginService.myAccount.username, this.loginService.myAccount.password);
+    });
   }
   
   selectedCampaign:Campaign;
