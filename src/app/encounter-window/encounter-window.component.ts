@@ -72,7 +72,9 @@ export class EncounterWindowComponent implements OnInit {
     } else {
       alert("No encounter found for that campaign -- create one!");
     }
-    this.DM = true;
+    this.cs.adamIsDm(this.ls.myProfile.id, campaign.id).subscribe(x => {
+      console.log(x);
+      this.DM = (x === 'true')});
   }
 
   joinAsPlayer() {

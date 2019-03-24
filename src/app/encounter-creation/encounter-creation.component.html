@@ -8,6 +8,7 @@
 </div>
 
 <div *ngIf="model_campaign.id!==0">
+  <b>is this your campaign?: {{DM}}</b>
   <b>Use Template:</b>
   <div *ngFor="let monster of monster_list">
     <form (ngSubmit)="onSubmitTemplate(monster)">
