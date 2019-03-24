@@ -7,6 +7,8 @@ import { IMEncounter } from '../imencounter';
 import { Turn } from '../turn';
 import { LoginService } from '../login.service';
 import { IMCharacter } from '../imcharacter';
+import { CampaignService } from '../campaign.service';
+import { Campaign } from '../campaign';
 
 @Component({
   selector: 'app-encounter-window',
@@ -17,20 +19,27 @@ import { IMCharacter } from '../imcharacter';
 export class EncounterWindowComponent implements OnInit {
   private serverUrl = '/ws';
   private stompClient;
-  public messages: Array<Message> = [new Message("CHAT", "woot2", "hardcodetest")];
 
-  public monsters: Array<IMMonster> = [new IMMonster("Goblin_1", "Goblin", 6, 14, 10),
-      new IMMonster("Goblin_2", "Goblin", 6, 14, 10)];
-  public characters: Array<IMCharacter> = [new IMCharacter(0, 0, 0, "blehrg", 10, 10, 10)];
+  public campaign_list: Array<Campaign>;
+  public model_campaign: Campaign = new Campaign(null, null, null, 0);
+  public DM: boolean = false;
+
+  public monsters: Array<IMMonster> = [new IMMonster("Placeholder_Mon1", "Goblin", 6, 14, 10),
+      new IMMonster("Placeholder_Mon2", "Goblin", 6, 14, 10)];
+  public characters: Array<IMCharacter> = [new IMCharacter(0, 0, 0, "Placeholder_Char", 10, 10, 10)];
   public turn: Turn = new Turn([1,3,3,2,3,4,5],6,0);
   public state: IMEncounter = new IMEncounter(this.monsters, this.characters, this.turn);
 
 
-  constructor(public ls: LoginService) {
+  constructor(
+      public ls: LoginService,
+      private cs: CampaignService) {
     this.initializeWebSocketConnection();
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.cs.adamGetCampaigns().subscribe(x => this.campaign_list = JSON.parse(x));
+  }
 
   initializeWebSocketConnection() {
     let ws = new SockJS(this.serverUrl);
@@ -53,12 +62,28 @@ export class EncounterWindowComponent implements OnInit {
     console.log(JSON.stringify(obj));
   }
 
-  sendMessage(cont, typenum=0, user='DefaultUser') {
-    // kept as basic object because of interaction with enum for type
-    let obj = {type: typenum, content: cont, sender: user};
-    this.stompClient.send("/app/enc.sendMessage", null, JSON.stringify(obj) );
-    console.log('sending message to' + this.stompClient.serverUrl);
-    console.log(JSON.stringify(obj));
+  chooseCampaign(campaign: Campaign) {
+    this.model_campaign.id = campaign.id;
+    this.model_campaign.name = campaign.name;
+    this.model_campaign.owner = null;
+    this.model_campaign.players = null;
+    if (campaign.saveState.length > 0) {
+      this.state = JSON.parse(campaign.saveState.toString());
+    } else {
+      alert("No encounter found for that campaign -- create one!");
+    }
+    this.DM = true;
+  }
+
+  joinAsPlayer() {
+    this.model_campaign.id=1;
+    //not meant to change anything, just prompts server for state
+    this.sendState(this.state, 0, '99999');
+  }
+
+  writeState() {
+    this.model_campaign.saveState = JSON.stringify(this.state);
+    this.cs.editCampaign(this.model_campaign);
   }
 
   get diagnostic() { return JSON.stringify(this.state); }

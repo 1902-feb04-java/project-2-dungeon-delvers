@@ -14,6 +14,13 @@ import { CampaignComponent } from './campaign/campaign.component';
 export class CampaignService {
   public campaigns:Campaign[] =  [new Campaign(null,null,null,null)];
   constructor(private http: HttpClient, private loginService: LoginService) { }
+
+  adamGetCampaigns() {
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    return this.http.get("/campaigns/get", { responseType: "text", headers: headers });
+  }
+
   public getCampaigns()
   {
    this.http.get<string>("/campaigns/get").subscribe(x=>{
