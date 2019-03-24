@@ -53,7 +53,31 @@ public class CampaignController {
 		}
 		
 	}
-	
+	@PostMapping(path="/edit", consumes="application/json")
+    public void editCampaign(@RequestBody String c) {
+		ObjectMapper mapper = new ObjectMapper();
+		JsonNode jn;
+		CampaignWithOwner cwo = new CampaignWithOwner();
+		//IMEncounter jsonEncounter = null;
+		try {
+			jn = mapper.readTree(c);
+			cwo.name = jn.get("name").asText();
+			cwo.saveState = jn.get("saveState").asText();
+			cwo.id = jn.get("id").asInt();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		Campaign camp = new Campaign();
+		
+		camp.setCampaignName(cwo.name);
+		camp.setSaveState(cwo.saveState);
+		camp.setid(cwo.id);
+		cs.addCampaign(camp);
+		System.out.println(camp.toString());
+    
+    	
+	}
 	@PostMapping(path="/post", consumes="application/json")
     public void addCampaign(@RequestBody String c) {
 		ObjectMapper mapper = new ObjectMapper();
@@ -64,13 +88,17 @@ public class CampaignController {
 			jn = mapper.readTree(c);
 			cwo.owner = jn.get("owner").asInt();
 			cwo.name = jn.get("name").asText();
+			cwo.saveState = jn.get("saveState").asText();
+			cwo.id = jn.get("id").asInt();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		Campaign camp = new Campaign();
-		camp.setCampaignName(cwo.name);
 		
+		camp.setCampaignName(cwo.name);
+		camp.setSaveState(cwo.saveState);
+		camp.setid(cwo.id);
 		cs.addCampaign(camp);
 		System.out.println(camp.toString());
     	CampaignsToAccounts cta = new CampaignsToAccounts(0,cwo.owner,camp.getid(),true);
@@ -81,12 +109,14 @@ public class CampaignController {
 		public String name;
 		public int id=0;
 		public int owner;
+		public String saveState = "";
 		
-		public CampaignWithOwner(String name, int id, int owner) {
+		public CampaignWithOwner(String name, int id, int owner, String saveState) {
 			super();
 			this.name = name;
 			this.id = id;
 			this.owner = owner;
+			this.saveState = saveState;
 		}
 
 		public CampaignWithOwner() {
@@ -96,7 +126,7 @@ public class CampaignController {
 
 		@Override
 		public String toString() {
-			return "CampaignWithOwner [name=" + name + ", id=" + id + ", owner=" + owner + "]";
+			return "CampaignWithOwner [name=" + name + ", id=" + id + ", owner=" + owner + ", saveState= " + saveState + "]";
 		}
 		
 		

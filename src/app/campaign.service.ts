@@ -26,7 +26,7 @@ export class CampaignService {
        {
          let camp:Campaign = new Campaign(null,null,null,null);
           camp.id = c.id;
-          camp.name = c.campaignName;
+          camp.name = c.name;
 
          this.campaigns.push(camp);
        }
@@ -73,7 +73,17 @@ export class CampaignService {
     this.http.post("/campaigns/post", a, { responseType: "text", headers: headers }).source.subscribe(x=>{
       this.loginService.login(this.loginService.myAccount.username, this.loginService.myAccount.password);
     });
+    this.loginService.myProfile.campaigns[0].saveState = "boogerman";
+    this.editCampaign(this.loginService.myProfile.campaigns[0]);
     
+  }
+  public editCampaign(campaign : Campaign)
+  {
+    
+    console.log(JSON.stringify(campaign) + "test");
+    this.http.post("/campaigns/edit", campaign).source.subscribe(x=>{
+      this.loginService.login(this.loginService.myAccount.username, this.loginService.myAccount.password);
+    });
   }
   
   selectedCampaign:Campaign;

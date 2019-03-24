@@ -7,5 +7,5 @@ import DD.entity.Campaign;
 
 @Repository
 public interface CampaignRepository extends JpaRepository<Campaign, Integer>{
-
+	
 }
