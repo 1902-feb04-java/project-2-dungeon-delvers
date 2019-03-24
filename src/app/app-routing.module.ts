@@ -22,8 +22,6 @@ const routes: Routes = [
   {path: 'campaign', component: CampaignComponent},
   {path: 'character', component: CharacterComponent},
   {path: 'pccreation', component: CharacterCreationComponent},
-
-
   {path: 'monstercreation', component: MonsterCreationComponent},
   {path: 'campaign/create', component: CampaignCreationComponent},
   {path: 'chat-window', component: ChatWindowComponent},
