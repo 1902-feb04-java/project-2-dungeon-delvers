@@ -30,6 +30,7 @@ public class Monster {
 	
 	@Column(name="hp")
 	private int hp;
+	
 	@Column(name="account_id")
 	private int accountId = 0;
 	@Override

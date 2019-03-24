@@ -54,4 +54,13 @@ p {
 }
 button {
     margin: 5px;
+    width: 80%;
+    
+    background-color: rgba(209, 167, 167, 0.8);
+    
+}
+button:active {
+    background-color: rgba(209, 167, 167, 0.3);
+    border-color: burlywood;
+    border-width: 2px;
 }
