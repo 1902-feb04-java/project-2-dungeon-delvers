@@ -1,7 +1,6 @@
 package encounter;
 
 public class Encounter {
-
 	long id;
 	String encounterName;
 	
@@ -17,5 +16,4 @@ public class Encounter {
 		this.userId = uId;
 		this.monsters = mons;
 	}
-
 }

@@ -10,6 +10,12 @@ export class CharacterCreationService {
   constructor(private http: HttpClient) { 
     
   }
+
+  getCharacters(): Observable<any> {
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    return this.http.get("/characters", {responseType: "text", headers: headers });
+  }
   
   sendCharacter(c:Character): Observable<any> {
     let headers = new HttpHeaders();
