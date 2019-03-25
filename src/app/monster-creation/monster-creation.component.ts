@@ -13,7 +13,7 @@ export class MonsterCreationComponent implements OnInit {
 
   model = new Monster(0, this.ls.myProfile.id,"gablin", 4, 14, 7);
   submitted = false;
-  post_result: Monster;
+  post_result: Monster = null;
 
   constructor(private mcs:MonsterCreationService, private ls:LoginService) { }
 

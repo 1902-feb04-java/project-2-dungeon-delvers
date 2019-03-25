@@ -18,14 +18,15 @@
   </form>
   <fieldset>
     <legend>Encounter Window</legend>
-
-    <b>Current Turn: {{state.turn.pos}}</b>
-    <b> Turn Order By Id: {{state.turn.turns.toString()}}</b>
-    <br>
-    <b>Is DM: {{DM.toString()}}</b>
-    <h3 *ngIf="state.turn.turns[state.turn.pos] === ls.myProfile.id">It's your turn!</h3>
+    <fieldset>
+      <b>Current Turn: {{state.turn.pos}}</b>
+      <b> Turn Order By Id: {{state.turn.turns.toString()}}</b>
+      <br>
+      <b>Is DM: {{DM.toString()}}</b>
+      <h1 *ngIf="state.turn.turns[state.turn.pos] === ls.myProfile.id">It's your turn!</h1>
+    </fieldset>
     <form #monsterList="ngForm" (ngSubmit)="sendState(state)">
-      <h3>Monsters</h3>
+      <h3>Monsters:</h3>
       <div *ngFor="let monster of state.monsterArray">
         <fieldset>
           <legend>{{monster.name}}</legend>
@@ -38,7 +39,7 @@
           <input type="number" name={{monster.name}}_dd [(ngModel)]="monster.damageDie">
         </fieldset>
       </div>
-      <h3>Player Characters</h3>
+      <h3>Player Characters:</h3>
       <div *ngFor="let character of state.characterArray">
         <fieldset>
           <legend>{{character.name}}</legend>

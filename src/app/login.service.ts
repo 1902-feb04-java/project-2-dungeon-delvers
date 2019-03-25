@@ -11,6 +11,7 @@ import { routerNgProbeToken } from '@angular/router/src/router_module';
 export class LoginService {
   public myProfile:Profile = null;
   public myAccount:Account = new Account(null,null,null,null);
+  public loggedIn = false;
   constructor(private http:HttpClient, private router:Router) {
     this.myProfile = this.getProfile();
     console.log('wtf');
@@ -35,6 +36,7 @@ export class LoginService {
         this.myAccount.password = o.account.password;
         this.myAccount.id = o.account.id;
         //console.log(JSON.stringify(this.myAccount) + '\n' + JSON.stringify(this.myProfile));
+        this.loggedIn = true;
         this.router.navigateByUrl('/home');
         
       }

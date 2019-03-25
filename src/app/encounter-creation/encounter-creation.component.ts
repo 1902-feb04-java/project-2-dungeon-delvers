@@ -26,6 +26,7 @@ export class EncounterCreationComponent implements OnInit {
   model_campaign: Campaign = new Campaign(0, ["1","2"], "placeholder_campa", 0);
 
   DM = false;
+  isLoaded = false;
 
   constructor(
       private ecs: EncounterCreationService,
@@ -89,6 +90,7 @@ export class EncounterCreationComponent implements OnInit {
 
   loadState() {
     this.model = Object.assign(this.model, JSON.parse(this.model_campaign.saveState.toString()));
+    this.isLoaded = true;
   }
 
   saveEncounter() {
@@ -100,6 +102,6 @@ export class EncounterCreationComponent implements OnInit {
     }
   }
 
-  get diagnostic() { return JSON.stringify(this.model) + "\n\n" + JSON.stringify(this.model_campaign); }
+  get diagnostic() { return JSON.stringify(this.model); }
 
 }

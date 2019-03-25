@@ -16,7 +16,7 @@ export class ChatWindowComponent implements OnInit {
   private serverUrl = '/ws';
   private stompClient;
 
-  public messages: Array<Message> = [new Message("CHAT", "woot", "hardcodetest")];
+  public messages: Array<Message> = Array(10).fill(new Message("", "", " "));
 
   public chName;
   
