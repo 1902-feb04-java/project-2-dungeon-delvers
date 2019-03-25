@@ -37,7 +37,11 @@ export class EncounterCreationComponent implements OnInit {
     this.ecs.getMonsters().subscribe(x => this.monster_list = JSON.parse(x));
     // this.ls.myProfile.campaigns.players;
     this.ccs.getCharacters().subscribe(x => this.character_list = JSON.parse(x));
-    this.cs.adamGetCampaigns().subscribe(x => this.campaign_list = JSON.parse(x));
+    if(this.ls.myProfile.campaigns) {
+      this.campaign_list = this.ls.myProfile.campaigns;
+    } else {
+      this.cs.adamGetCampaigns().subscribe(x => this.campaign_list = JSON.parse(x));
+    }
     
   }
 
@@ -81,6 +85,10 @@ export class EncounterCreationComponent implements OnInit {
     this.cs.adamIsDm(this.ls.myProfile.id, campaign.id).subscribe(x => {
       console.log(x);
       this.DM = (x === 'true')});
+  }
+
+  loadState() {
+    this.model = Object.assign(this.model, JSON.parse(this.model_campaign.saveState.toString()));
   }
 
   saveEncounter() {

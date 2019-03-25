@@ -5,6 +5,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .paper-background {
     background-image: url("./app/img/paper.jpg");
-    background-size: cover; 
-    position: sticky;
+    background-size: cover;
+    padding: 25px; 
+    /* position: sticky; */
+}
+
+div {
+    padding: 5px;
 }
