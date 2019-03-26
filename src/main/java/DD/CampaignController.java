@@ -2,6 +2,7 @@ package DD;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import DD.entity.Campaign;
 import DD.entity.CampaignsToAccounts;
+import DD.entity.Character;
 import DD.service.CampaignService;
 import DD.service.CampaignsToAccountsService;
 
@@ -23,6 +25,13 @@ public class CampaignController {
 	CampaignService cs;
 	@Autowired
 	CampaignsToAccountsService ctas;
+	
+	@GetMapping(path="/isDM/{aId}/{cId}")
+	public boolean getCharactersByAccount(
+			@PathVariable("aId") int aId,
+			@PathVariable("cId") int cId) {
+		return ctas.isOwner(aId, cId);
+	}
 	
 	@GetMapping(path="/get")
 	public Campaign[] getCampaign()
@@ -105,6 +114,8 @@ public class CampaignController {
     	ctas.addCampaignsToAccounts(cta);
     	
 	}
+	
+
 	public class CampaignWithOwner {
 		public String name;
 		public int id=0;

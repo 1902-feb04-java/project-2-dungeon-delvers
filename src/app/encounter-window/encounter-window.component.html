@@ -1,58 +1,82 @@
 <div *ngIf="model_campaign.id===0">
-    <h2>Select Campaign:</h2>
-    <div *ngFor="let campaign of campaign_list">
-      <form (ngSubmit)="chooseCampaign(campaign)">
-        <button type="submit">{{campaign.name}}</button>
-      </form>
-    </div>
-    <form (ngSubmit)="joinAsPlayer()">
-      <button type="submit">Join As Player</button>
+  <h2>Select Campaign:</h2>
+  <div *ngFor="let campaign of campaign_list">
+    <form (ngSubmit)="chooseCampaign(campaign)">
+      <button type="submit">{{campaign.name}}</button>
     </form>
+  </div>
+  <!-- <form (ngSubmit)="joinAsPlayer()">
+    <button type="submit">Join As Player</button>
+  </form> -->
 </div>
-  
+
 <div *ngIf="model_campaign.id!==0">
-<fieldset>
-  <legend>Encounter Window</legend>
-
-  <b>Current Turn: {{state.turn.pos}}</b>
-  <b>    Turn Order By Id: {{state.turn.turns.toString()}}</b>
-  <br>
-  <b>Is DM: {{DM.toString()}}</b>
-  <h3 *ngIf="state.turn.turns[state.turn.pos] === ls.myProfile.id">It's your turn!</h3>
-  <form #monsterList="ngForm" (ngSubmit)="sendState(state)">
-    <h3>Monsters</h3>
-    <div *ngFor="let monster of state.monsterArray">
-      <fieldset>
-        <legend>{{monster.name}}</legend>
-      <b>Type: {{monster.type}}</b><br>
-      <b>HP</b>
-      <input type="number" name={{monster.name}}_hp [(ngModel)]="monster.hp">
-      <b>AC</b>
-      <input type="number" name={{monster.name}}_ac [(ngModel)]="monster.ac">
-      <b>Damage Die</b>
-      <input type="number" name={{monster.name}}_dd [(ngModel)]="monster.damageDie">
+  <form (ngSubmit)="sendJoin(state)" *ngIf="!joined">
+    <button type="submit">Join Encounter</button>
+    <br>
+    <b>Joined : {{joined}}</b>
+  </form>
+  <fieldset>
+    <legend>Encounter Window</legend>
+    <fieldset>
+      <b>Current Turn: {{state.turn.pos}}</b>
+      <b> Turn Order By Id: {{state.turn.turns.toString()}}</b>
+      <br>
+      <b>Is DM: {{DM.toString()}}</b>
+      <h1 *ngIf="state.turn.turns[state.turn.pos] === ls.myProfile.id">It's your turn!</h1>
     </fieldset>
-    </div>
-    <h3>Player Characters</h3>
-    <div *ngFor="let character of state.characterArray">
-      <fieldset>
-        <legend>{{character.name}}</legend>
-      <b>Type: {{character.type}}</b><br>
-      <b>HP</b>
-      <input type="number" name={{character.name}}_hp [(ngModel)]="character.hp">
-      <b>AC</b>
-      <input type="number" name={{character.name}}_ac [(ngModel)]="character.ac">
-      <b>Damage Die</b>
-      <input type="number" name={{character.name}}_dd [(ngModel)]="character.damageDie">
+    <form #monsterList="ngForm" (ngSubmit)="sendState(state)">
+      <h3>Monsters:</h3>
+      <div *ngFor="let monster of state.monsterArray">
+        <fieldset>
+          <legend>{{monster.name}}</legend>
+          <b>Type: {{monster.type}}</b><br>
+          <b>HP</b>
+          <input type="number" name={{monster.name}}_hp [(ngModel)]="monster.hp">
+          <b>AC</b>
+          <input type="number" name={{monster.name}}_ac [(ngModel)]="monster.ac">
+          <b>Damage Die</b>
+          <input type="number" name={{monster.name}}_dd [(ngModel)]="monster.damageDie">
+        </fieldset>
+      </div>
+      <h3>Player Characters:</h3>
+      <div *ngFor="let character of state.characterArray">
+        <fieldset>
+          <legend>{{character.name}}</legend>
+          <b>Type: {{character.type}}</b><br>
+          <b>HP</b>
+          <input type="number" name={{character.name}}_hp [(ngModel)]="character.hp">
+          <b>AC</b>
+          <input type="number" name={{character.name}}_ac [(ngModel)]="character.ac">
+          <b>Damage Die</b>
+          <input type="number" name={{character.name}}_dd [(ngModel)]="character.damageDie">
+        </fieldset>
+      </div>
+      <button type="submit">Send State</button>
+    </form>
+
+    <!-- <br> Diagnostic: {{ diagnostic }} -->
+
+  </fieldset>
+
+  <div *ngIf="DM">
+    <fieldset>
+      <legend>DM Options</legend>
+      <form (ngSubmit)="sendStateDM(state)">
+        <button type="submit">Send State as DM</button>
+      </form>
+      <br>
+      <form (ngSubmit)="sendSkip(state)">
+        <button type="submit">Skip Turn</button>
+      </form>
+      <br>
+      <form (ngSubmit)="sendInit(state)">
+        <button type="submit">Begin Initiative</button>
+      </form>
+      <br>
+      <form (ngSubmit)="writeState()">
+        <button type="submit">Save State</button>
+      </form>
     </fieldset>
-    </div>
-    <button type="submit">Send State</button>
-   </form>
-
-   <br> Diagnostic: {{ diagnostic }}
-
-</fieldset>
-<form (ngSubmit)="writeState()" *ngIf="DM">
-  <button type="submit">Save State</button>
-</form>
+  </div>
 </div>

@@ -4,6 +4,7 @@
 <div *ngFor="let message of messages">
   <b *ngIf="message.type==='CHAT'">{{ message.sender }} says {{ message.content }}</b>
   <b *ngIf="message.type==='DICE'">{{ message.sender }} rolled a {{ message.content }}</b>
+  <b *ngIf="message.type===''">   </b>
 </div>
 <input #msg>
 
@@ -16,7 +17,7 @@
 <button (click)="rollDie(dice.value)">Roll!</button>
 </fieldset>
 
-
 <app-encounter-window></app-encounter-window>
 
 </html>
+

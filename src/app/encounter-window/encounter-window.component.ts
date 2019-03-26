@@ -23,6 +23,7 @@ export class EncounterWindowComponent implements OnInit {
   public campaign_list: Array<Campaign>;
   public model_campaign: Campaign = new Campaign(null, null, null, 0);
   public DM: boolean = false;
+  public joined: boolean = false;
 
   public monsters: Array<IMMonster> = [new IMMonster("Placeholder_Mon1", "Goblin", 6, 14, 10),
       new IMMonster("Placeholder_Mon2", "Goblin", 6, 14, 10)];
@@ -38,7 +39,12 @@ export class EncounterWindowComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.cs.adamGetCampaigns().subscribe(x => this.campaign_list = JSON.parse(x));
+    if(this.ls.myProfile.campaigns) {
+      this.campaign_list = this.ls.myProfile.campaigns;
+    } else {
+      this.cs.adamGetCampaigns().subscribe(x => this.campaign_list = JSON.parse(x));
+    }
+    this.model_campaign.id = 0;
   }
 
   initializeWebSocketConnection() {
@@ -55,11 +61,39 @@ export class EncounterWindowComponent implements OnInit {
     });
   }
 
-  sendState(state, typenum=0, user='1') {
+  sendState(state, typenum=0, user=this.ls.myProfile.id) {
     let obj = {type: typenum, content: JSON.stringify(state), sender: user};
     this.stompClient.send("/app/enc.sendMessage", null, JSON.stringify(obj) );
     console.log('sending message to' + this.stompClient.serverUrl);
     console.log(JSON.stringify(obj));
+  }
+
+  sendStateDM(state, typenum=1, user='1') {
+    let obj = {type: typenum, content: JSON.stringify(state), sender: user};
+    this.stompClient.send("/app/enc.sendMessage", null, JSON.stringify(obj) );
+    console.log('sending message to' + this.stompClient.serverUrl);
+    console.log(JSON.stringify(obj));
+  }
+
+  sendJoin(state, typenum=0, user=this.ls.myProfile.id) {
+    if(!this.joined) {
+      let obj = {type: typenum, content: JSON.stringify(state), sender: user};
+      this.stompClient.send("/app/enc.join", null, JSON.stringify(obj) );
+      console.log('sending message to' + this.stompClient.serverUrl);
+    }
+    this.joined = true;
+  }
+
+  sendInit(state, typenum=2, user=this.ls.myProfile.id) {
+    let obj = {type: typenum, content: JSON.stringify(state), sender: user};
+    this.stompClient.send("/app/enc.sendMessage", null, JSON.stringify(obj) );
+    console.log('sending message to' + this.stompClient.serverUrl);
+  }
+
+  sendSkip(state, typenum=3, user=this.ls.myProfile.id) {
+    let obj = {type: typenum, content: JSON.stringify(state), sender: user};
+    this.stompClient.send("/app/enc.sendMessage", null, JSON.stringify(obj) );
+    console.log('sending message to' + this.stompClient.serverUrl);
   }
 
   chooseCampaign(campaign: Campaign) {
@@ -72,13 +106,15 @@ export class EncounterWindowComponent implements OnInit {
     } else {
       alert("No encounter found for that campaign -- create one!");
     }
-    this.DM = true;
+    this.cs.adamIsDm(this.ls.myProfile.id, campaign.id).subscribe(x => {
+      console.log(x);
+      this.DM = (x === 'true')});
   }
 
   joinAsPlayer() {
     this.model_campaign.id=1;
     //not meant to change anything, just prompts server for state
-    this.sendState(this.state, 0, '99999');
+    this.sendJoin(this.state);
   }
 
   writeState() {

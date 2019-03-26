@@ -1,23 +1,24 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+      *ngIf="ls.loggedIn"
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="!(isHandset$ | async)">
-    <mat-toolbar>Go Places</mat-toolbar>
+    <mat-toolbar>Links</mat-toolbar>
     <mat-nav-list>
       <a mat-list-item routerLink="/home">Home</a>
       <a mat-list-item routerLink="/pccreation">Create Character</a>
       <a mat-list-item routerLink="/monstercreation">Create Monster</a>
-      <a mat-list-item routerLink="">Login</a>
-      <a mat-list-item routerLink="/chat-window">Chat</a>
-      <a mat-list-item routerLink="/character">View Character</a>
+      <a mat-list-item routerLink="/campaign/create">Create Campaign</a>
       <a mat-list-item routerLink="/encountercreation">Create Encounter</a>
-      <a mat-list-item href="#">Link 3</a>
+      <a mat-list-item routerLink="/chat-window">Encounter!</a>
+      <a mat-list-item routerLink="/character">View Characters</a>
+      <a mat-list-item href="/">Logout</a>
 
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
+    <mat-toolbar color="primary" *ngIf="ls.loggedIn">
       <button
         type="button"
         aria-label="Toggle sidenav"

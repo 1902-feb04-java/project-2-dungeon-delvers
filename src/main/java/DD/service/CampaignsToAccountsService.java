@@ -78,4 +78,19 @@ public class CampaignsToAccountsService {
 		System.out.println(s==null);
 		return (s==null);
 	}
+	public boolean isOwner(int account_id, int campaign_id)
+    {
+        CampaignsToAccounts s = null;
+        try {
+            s = rep.getByAccountIdAndCampaignId(account_id, campaign_id);
+        }
+        catch (Exception e) {
+            return false;
+        }
+        if(s != null) {
+        	return s.isDungeon_master();
+        } else {
+        	return false;
+        }
+    }
 }

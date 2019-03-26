@@ -1,3 +1,4 @@
+<html class="paper-background">
 <div *ngIf="model_campaign.id===0">
   <h2>Select Campaign:</h2>
   <div *ngFor="let campaign of campaign_list">
@@ -8,12 +9,11 @@
 </div>
 
 <div *ngIf="model_campaign.id!==0">
-  <b>Use Template:</b>
-  <div *ngFor="let monster of monster_list">
-    <form (ngSubmit)="onSubmitTemplate(monster)">
-      <button type="submit">{{monster.name}}</button>
-    </form>
-  </div>
+  <b>is this your campaign?: {{DM}}</b><br>
+
+  <form (ngSubmit)="loadState()" *ngIf="!isLoaded">
+    <button type="submit">Load State</button>
+  </form>
 
   <b>Add Character:</b>
   <div *ngFor="let character of character_list">
@@ -24,6 +24,12 @@
 
   <fieldset>
     <legend>Add Monster To Encounter</legend>
+    <b>Use Template For Monster:</b>
+    <div *ngFor="let monster of monster_list">
+      <form (ngSubmit)="onSubmitTemplate(monster)">
+        <button type="submit">{{monster.name}}</button>
+      </form>
+    </div>
     <div class="container">
       <form (ngSubmit)="onSubmitMonster()" #monsterCreation="ngForm">
         <div class="form-group">
@@ -62,8 +68,10 @@
 
 
 </div>
+<!-- 
+<br>current model: {{ diagnostic }} -->
 
-<br>current model: {{ diagnostic }}
+</html>
 
 
 <!--

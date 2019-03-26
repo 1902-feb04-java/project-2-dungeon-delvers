@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RegisterService } from '../register.service';
 
 import { Account } from '../account';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-form',
@@ -14,7 +15,7 @@ export class RegisterFormComponent implements OnInit {
   submitted = false;
   post_result: Account;
 
-  constructor(private register:RegisterService) { }
+  constructor(private register:RegisterService, private router:Router) { }
 
   ngOnInit() {
   }
@@ -22,6 +23,7 @@ export class RegisterFormComponent implements OnInit {
   onSubmit() {
     this.submitted=true;
     this.register.sendAccount(this.model).subscribe(x => this.post_result = x);
+    this.router.navigateByUrl("/");
   }
 
   get diagnostic() { return JSON.stringify(this.model); }

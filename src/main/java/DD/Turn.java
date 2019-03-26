@@ -13,7 +13,7 @@ public class Turn {
 		super();
 	}
 	
-	public Turn(int dungeonMasterId, int monsterCount, int... playerIds)
+	public Turn(int dungeonMasterId, int monsterCount, Integer... playerIds)
 	{
 		ArrayList<Integer> i = new ArrayList<Integer>();
 		for (int pi : playerIds)
@@ -33,6 +33,8 @@ public class Turn {
 			toArr[x] = (int)i.get(x);
 		}
 		turns = toArr;
+		max = i.size();
+		pos = 0;
 	}
 	
 	public boolean isNext(int id)
@@ -45,10 +47,13 @@ public class Turn {
 		return false; 
 		
 	}
+	public void skipTurn() {
+		next();
+	}
 	
 	private void next()
 	{
-		if ((pos + 1) == max)
+		if ((pos + 1) >= max)
 		{
 			pos = 0;
 		}

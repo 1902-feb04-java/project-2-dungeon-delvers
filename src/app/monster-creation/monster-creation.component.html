@@ -1,7 +1,7 @@
 <html class="paper-background">
 
 <div class="container">
-  <h1>Add New Monster</h1>
+  <h1>Create Monster</h1>
   <form (ngSubmit)="onSubmit()" #monsterCreation="ngForm">
     <div class="form-group">
       <label for="name">Name</label>
@@ -29,8 +29,10 @@
   </form>
 </div>
 
-<br>current model: {{ diagnostic }}
-<br>post result: {{ post_result }}
+<h3 *ngIf="post_result !== null">Success!</h3>
+
+<!-- <br>current model: {{ diagnostic }}
+<br>post result: {{ post_result }} -->
 
 
 </html>

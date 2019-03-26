@@ -21,6 +21,10 @@ export class CampaignService {
     return this.http.get("/campaigns/get", { responseType: "text", headers: headers });
   }
 
+  adamIsDm(aId: number, cId: number) {
+    return this.http.get("/campaigns/isDM/" + aId + "/" + cId, { responseType: "text" });
+  }
+
   public getCampaigns()
   {
    this.http.get<string>("/campaigns/get").subscribe(x=>{
